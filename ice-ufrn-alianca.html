@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aliança Científica — Instituto do Cérebro UFRN</title>
+<title>Aliança Científica — Instituto do Cérebro UFRN × IFRN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #1a1814;
@@ -14,624 +14,1100 @@
   --ink3: #6e6b67;
   --paper: #ffffff;
   --paper2: #faf8f4;
-  --paper3: #f0ede8;
-  --rule: rgba(26,24,20,.1);
-  --amber: #8c5c00;
-  --amber-bg: #fdf5e6;
-  --amber-border: #e0c87a;
-  --blue: #0f4e8a;
-  --blue-bg: #eef5fc;
-  --blue-border: #9ec4e8;
+  --paper3: #f2efe9;
+  --rule: rgba(26,24,20,.09);
   --green: #1e5c1e;
-  --green-bg: #f0f7f0;
-  --green-border: #8ec98e;
+  --green2: #2d7a2d;
+  --green-light: #f0f7f0;
+  --green-border: #a8d5a8;
+  --blue: #0f4e8a;
+  --blue-light: #eef5fc;
+  --blue-border: #9ec4e8;
+  --amber: #8c5c00;
+  --amber-light: #fdf6e8;
+  --amber-border: #dfc070;
   --serif: 'Fraunces', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 14px;
+  --shadow: 0 2px 16px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.05);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
 body {
   font-family: var(--sans);
-  background: var(--paper);
+  background: var(--paper2);
   color: var(--ink);
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-  font-family: var(--serif);
-  font-weight: 300;
-  line-height: 1.2;
-}
-h1 { font-size: 2.2rem; margin-bottom: 1rem; }
-h2 { font-size: 1.6rem; margin-bottom: .75rem; margin-top: 2rem; }
-h3 { font-size: 1.05rem; font-weight: 400; margin-top: 1.25rem; margin-bottom: .5rem; }
-
-p { color: var(--ink2); margin-bottom: .75rem; }
 a { color: var(--blue); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem 3rem;
+/* ═══════════════════════════
+   HERO
+═══════════════════════════ */
+.hero {
+  background: var(--green);
+  color: white;
+  padding: 3rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
 }
 
-/* === TOP BANNER === */
-.banner {
-  background: var(--paper2);
-  border-bottom: 2px solid #359846;
-  color: var(--ink);
-  padding: 1.25rem 2rem;
-  margin: -2.5rem -2rem 2.5rem -2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  pointer-events: none;
 }
-.banner-logo {
-  width: 44px;
-  height: 44px;
-  background: #359846;
-  border-radius: 8px;
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -40px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.03);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-brand {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: .75rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-logo {
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
 }
-.banner-logo svg {
-  width: 30px;
-  height: 30px;
+
+.hero-brand-text {
+  font-size: .8rem;
+  font-weight: 500;
+  opacity: .85;
+  letter-spacing: .04em;
+  line-height: 1.4;
 }
-.banner-left {
-  display: flex;
-  flex-direction: column;
-  gap: .2rem;
-  flex: 1;
-}
-.banner-title {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--ink);
-  letter-spacing: .02em;
-}
-.banner-sub {
-  font-size: .78rem;
-  color: var(--ink3);
-  letter-spacing: .02em;
-}
-.banner-badge {
-  background: #359846;
-  color: white;
-  padding: .35rem .85rem;
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
   border-radius: 100px;
+  padding: .3rem .9rem;
   font-size: .72rem;
   font-weight: 500;
   letter-spacing: .06em;
-  white-space: nowrap;
-}
-
-/* === EYEBROW === */
-.eyebrow {
-  font-size: .7rem;
   text-transform: uppercase;
-  letter-spacing: .1em;
-  color: var(--ink3);
-  margin-bottom: .5rem;
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
-.eyebrow::before {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: var(--rule);
+  margin-bottom: 1.5rem;
 }
 
-/* === SECTIONS === */
-.section {
-  margin-bottom: 2.5rem;
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #7de87d;
+  flex-shrink: 0;
 }
-.section-intro {
-  background: var(--amber-bg);
-  border: 1px solid var(--amber-border);
-  border-radius: 12px;
-  padding: 1.5rem;
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: white;
+  margin-bottom: 1.25rem;
+  max-width: 680px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  opacity: .85;
+}
+
+.hero-lead {
+  font-size: clamp(.9rem, 2vw, 1.05rem);
+  opacity: .82;
+  max-width: 580px;
+  line-height: 1.6;
   margin-bottom: 2rem;
 }
-.section-intro p {
-  font-size: .95rem;
-  max-width: none;
-  color: var(--ink);
+
+.hero-partners {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-/* === GRID === */
+.hero-partner-pill {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 100px;
+  padding: .35rem 1rem;
+  font-size: .78rem;
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+
+.hero-divider {
+  opacity: .3;
+  font-size: .8rem;
+}
+
+/* ═══════════════════════════
+   LAYOUT PRINCIPAL
+═══════════════════════════ */
+.main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* ═══════════════════════════
+   INTRO CARD (logo destaque)
+═══════════════════════════ */
+.intro-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 2rem 1.75rem;
+  margin: -2rem 0 2.5rem;
+  position: relative;
+  z-index: 2;
+  border-top: 4px solid var(--green);
+}
+
+.intro-card p {
+  font-size: 1rem;
+  color: var(--ink2);
+  max-width: 720px;
+  line-height: 1.7;
+  margin-bottom: .75rem;
+}
+
+.intro-card p:last-child { margin-bottom: 0; }
+
+.intro-card strong { color: var(--ink); }
+
+/* ═══════════════════════════
+   SEÇÕES
+═══════════════════════════ */
+.section {
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--green);
+  margin-bottom: .75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 18px; height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 1.75rem 0 .75rem;
+}
+
+p { color: var(--ink2); margin-bottom: .75rem; }
+
+/* ═══════════════════════════
+   CARD DE PERFIL (Ivana)
+═══════════════════════════ */
+.profile-card {
+  background: var(--blue-light);
+  border: 1px solid var(--blue-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.profile-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.profile-info h3 {
+  color: var(--blue);
+  margin: 0 0 .25rem;
+  font-size: 1.05rem;
+}
+
+.profile-info p {
+  font-size: .8rem;
+  color: var(--ink3);
+  margin: 0;
+}
+
+.profile-items {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.profile-item {
+  padding: .65rem .9rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 3px solid var(--blue);
+  font-size: .875rem;
+  color: var(--ink2);
+  line-height: 1.45;
+}
+
+.profile-item strong { color: var(--ink); }
+
+.profile-insight {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(15,78,138,.06);
+  border-radius: 8px;
+  font-size: .9rem;
+  color: var(--ink2);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════
+   INTRO SEÇÃO (destaque âmbar)
+═══════════════════════════ */
+.section-intro {
+  background: var(--amber-light);
+  border: 1px solid var(--amber-border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.section-intro p {
+  font-size: .95rem;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════
+   GRID DE CARDS
+═══════════════════════════ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
   margin-top: 1.5rem;
 }
 
-/* === CARD === */
+.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
 .card {
   background: white;
   border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 1.25rem;
-  border-left: 4px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: var(--shadow);
+  transition: transform .2s, box-shadow .2s;
 }
-.card.amber { border-left-color: var(--amber); }
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,.1);
+}
+
+.card-accent { border-top: 3px solid var(--blue); }
+.card-accent.green { border-top-color: var(--green); }
+.card-accent.amber { border-top-color: var(--amber); }
+
+.card-icon {
+  font-size: 1.5rem;
+  margin-bottom: .75rem;
+  display: block;
+}
+
 .card h4 {
   font-family: var(--serif);
   font-size: 1rem;
   font-weight: 400;
-  margin-bottom: .5rem;
   color: var(--ink);
+  margin-bottom: .35rem;
+  line-height: 1.3;
 }
-.card-role {
-  font-size: .8rem;
+
+.card-meta {
+  font-size: .75rem;
   color: var(--ink3);
   margin-bottom: .75rem;
+  font-style: italic;
 }
+
 .card p {
   font-size: .875rem;
   color: var(--ink2);
+  margin-bottom: .5rem;
 }
+
 .card ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin-top: .5rem;
 }
+
 .card li {
-  font-size: .875rem;
+  font-size: .85rem;
   color: var(--ink2);
-  padding-left: 1.25rem;
+  padding: .25rem 0 .25rem 1.25rem;
   position: relative;
-  margin-bottom: .35rem;
+  border-bottom: 1px solid var(--rule);
 }
+
+.card li:last-child { border-bottom: none; }
+
 .card li::before {
   content: '→';
   position: absolute;
   left: 0;
   color: var(--blue);
-  font-weight: 500;
+  font-size: .8rem;
 }
 
-/* === HIGHLIGHT BOX === */
+/* ═══════════════════════════
+   HIGHLIGHT
+═══════════════════════════ */
 .highlight {
-  background: var(--blue-bg);
+  background: white;
   border: 1px solid var(--blue-border);
   border-left: 4px solid var(--blue);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin: 1.75rem 0;
+  box-shadow: var(--shadow);
 }
+
 .highlight h4 {
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 400;
   color: var(--blue);
-  margin-bottom: .5rem;
+  margin-bottom: .75rem;
+  line-height: 1.3;
 }
+
 .highlight p {
   font-size: .9rem;
   color: var(--ink2);
-  margin: 0;
+  margin-bottom: .5rem;
+  line-height: 1.65;
 }
 
-/* === CTA === */
-.cta-block {
-  background: var(--green-bg);
-  border: 1px solid var(--green-border);
-  border-radius: 14px;
-  padding: 2rem;
-  text-align: center;
-  margin-top: 2.5rem;
+.highlight p:last-child { margin-bottom: 0; }
+
+/* ═══════════════════════════
+   TIMELINE DE FASES
+═══════════════════════════ */
+.timeline {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
-.cta-block h3 {
+
+.timeline-item {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: 0;
+  width: 2px;
+  background: var(--green-border);
+}
+
+.timeline-item:last-child::before { display: none; }
+
+.timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: .72rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-content {
+  padding-top: .35rem;
+  flex: 1;
+}
+
+.timeline-phase {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
   color: var(--green);
-  margin-top: 0;
-  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: .2rem;
 }
-.cta-block p {
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+
+.timeline-content p {
+  font-size: .9rem;
+  margin: 0;
   color: var(--ink2);
 }
-.cta-contact-wrap {
+
+/* ═══════════════════════════
+   INFOBOX (fundo paper2)
+═══════════════════════════ */
+.infobox {
+  background: var(--paper2);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  margin: 1.25rem 0;
+}
+
+.infobox p {
+  font-size: .9rem;
+  color: var(--ink2);
+  margin-bottom: .75rem;
+}
+
+.infobox p:last-child { margin-bottom: 0; }
+
+.arrow-list {
+  list-style: none;
+  padding: 0;
+  margin-top: .75rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.arrow-list li {
+  display: flex;
+  gap: .75rem;
+  font-size: .9rem;
+  color: var(--ink2);
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.arrow-list li::before {
+  content: '→';
+  color: var(--green);
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-top: .05em;
+}
+
+/* ═══════════════════════════
+   SEPARADOR DE SEÇÃO
+═══════════════════════════ */
+.section-divider {
+  height: 1px;
+  background: var(--rule);
+  margin: 2.5rem 0;
+}
+
+/* ═══════════════════════════
+   CTA FINAL
+═══════════════════════════ */
+.cta-section {
+  background: var(--green);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  color: white;
+  text-align: center;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+  pointer-events: none;
+}
+
+.cta-section h2 {
+  color: white;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: .75rem;
+}
+
+.cta-section > p {
+  color: rgba(255,255,255,.82);
+  font-size: .95rem;
+  max-width: 540px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.65;
+}
+
+.cta-note {
+  font-size: .8rem;
+  color: rgba(255,255,255,.55);
+  margin-top: .5rem;
+  font-style: italic;
+}
+
+/* Card de contato dentro do CTA */
+.cta-inner {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 1.75rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
-.cta-contact {
-  display: flex;
-  flex-direction: column;
-  gap: .55rem;
-  padding: 1.5rem 1.75rem;
+
+.contact-card {
   background: white;
-  border: 1px solid var(--green-border);
-  border-radius: 10px;
-  font-size: .9rem;
+  border-radius: var(--radius);
+  padding: 1.5rem;
   text-align: left;
   min-width: 240px;
+  max-width: 300px;
+  flex: 1;
 }
-.cta-contact-name {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  color: var(--ink);
-  font-weight: 400;
-  margin-bottom: .25rem;
-}
-.cta-contact-role {
-  font-size: .8rem;
-  color: var(--ink3);
-  line-height: 1.4;
-  padding-bottom: .5rem;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: .25rem;
-}
-.cta-contact-item {
+
+.contact-card-header {
   display: flex;
   align-items: center;
-  gap: .5rem;
-  font-size: .875rem;
-  color: var(--ink2);
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
 }
-.cta-contact-item svg {
+
+.contact-card-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid var(--green-border);
+}
+
+.contact-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.contact-card-name {
+  font-family: var(--serif);
+  font-size: .95rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.contact-card-role {
+  font-size: .73rem;
+  color: var(--ink3);
+  line-height: 1.4;
+  margin-top: .2rem;
+}
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .82rem;
+  color: var(--ink2);
+  text-decoration: none;
+  transition: color .15s;
+}
+
+.contact-item:hover { color: var(--green); }
+.contact-item:hover { text-decoration: none; }
+
+.contact-item svg {
   flex-shrink: 0;
   color: var(--green);
 }
-.cta-contact-item a {
-  color: var(--ink2);
-  text-decoration: none;
-}
-.cta-contact-item a:hover { color: var(--green); }
-.cta-contact-item.whatsapp a { color: #1a7d3b; font-weight: 500; }
 
-/* QR code */
-.qr-wrap {
+.contact-item.wa { color: #1e7a1e; font-weight: 500; }
+
+/* QR */
+.qr-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .6rem;
+  gap: .75rem;
 }
+
 .qr-label {
-  font-size: .72rem;
+  font-size: .68rem;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: .1em;
   color: var(--ink3);
+  font-weight: 500;
 }
+
 #qrcode canvas, #qrcode img {
   border-radius: 6px;
-  border: 4px solid white;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  display: block;
 }
 
-/* === FOOTER === */
-.footer {
-  border-top: 1px solid var(--rule);
-  padding-top: 1.5rem;
-  margin-top: 3rem;
-  text-align: center;
-  font-size: .8rem;
+.qr-hint {
+  font-size: .72rem;
   color: var(--ink3);
+  text-align: center;
+  max-width: 110px;
+  line-height: 1.4;
 }
 
-/* === MOBILE === */
+/* ═══════════════════════════
+   FOOTER
+═══════════════════════════ */
+.footer {
+  text-align: center;
+  padding: 2rem 1.5rem 1.5rem;
+  font-size: .78rem;
+  color: var(--ink3);
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════
+   RESPONSIVO
+═══════════════════════════ */
 @media (max-width: 640px) {
-  .container { padding: 1.5rem 1rem 2rem; }
-  .banner { margin: -1.5rem -1rem 1.5rem -1rem; }
-  h1 { font-size: 1.6rem; }
-  h2 { font-size: 1.3rem; }
+  .hero { padding: 2rem 1.25rem 3rem; }
+  .main { padding: 0 1rem 3rem; }
+  .intro-card { margin: -1.5rem 0 2rem; padding: 1.5rem 1.25rem; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .cta-section { padding: 2rem 1.25rem; border-radius: 14px; }
+  .profile-card-header { flex-direction: column; gap: .75rem; }
+  .contact-card { min-width: 0; width: 100%; max-width: 100%; }
+  .hero h1 { font-size: 1.65rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-partners { gap: .5rem; }
+  .hero-partner-pill { font-size: .72rem; padding: .28rem .7rem; }
 }
 </style>
 </head>
 <body>
 
-<div class="banner">
-  <div class="banner-logo">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <!-- Círculo no topo esquerdo -->
-      <circle cx="20" cy="20" r="15" fill="white"/>
-      <!-- Quadrado topo meio -->
-      <rect x="38" y="8" width="24" height="24" rx="4" fill="white"/>
-      <!-- Quadrado topo direito -->
-      <rect x="68" y="8" width="24" height="24" rx="4" fill="white"/>
-      <!-- Quadrado meio esquerdo -->
-      <rect x="8" y="38" width="24" height="24" rx="4" fill="white"/>
-      <!-- Quadrado meio meio -->
-      <rect x="38" y="38" width="24" height="24" rx="4" fill="white"/>
-      <!-- Quadrado baixo esquerdo -->
-      <rect x="8" y="68" width="24" height="24" rx="4" fill="white"/>
-      <!-- Quadrado baixo meio -->
-      <rect x="38" y="68" width="24" height="24" rx="4" fill="white"/>
-      <!-- Quadrado baixo direito -->
-      <rect x="68" y="68" width="24" height="24" rx="4" fill="white"/>
-    </svg>
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-brand">
+      <svg class="hero-logo" viewBox="0 0 140 180" xmlns="http://www.w3.org/2000/svg">
+        <g fill="rgba(255,255,255,0.9)">
+          <circle cx="21.12" cy="21.12" r="21.12"/>
+          <rect x="47.76" y="1.76"  width="36.84" height="36.84" rx="3.87"/>
+          <rect x="94.22" y="1.76"  width="36.84" height="36.84" rx="3.87"/>
+          <rect x="1.76"  y="47.75" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="47.76" y="47.75" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="94.22" y="94.22" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="1.76"  y="94.22" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="47.76" y="94.22" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="1.76"  y="140.68" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="47.76" y="140.68" width="36.84" height="36.84" rx="3.87"/>
+        </g>
+      </svg>
+      <div class="hero-brand-text">IFRN — Natal Centro Histórico</div>
+    </div>
+
+    <div class="hero-tag">Convite de Colaboração Científica · Abril 2026</div>
+
+    <h1>Neurociência Cognitiva<br>encontra <em>Design de Mediação</em><br>na Educação Técnica</h1>
+
+    <p class="hero-lead">
+      Uma proposta de aliança entre o Instituto do Cérebro (UFRN), o IFRN e a UERN para validar cientificamente como o design — fundamentado em percepção visual, Gestalt e cognição — transforma o engajamento real do aluno.
+    </p>
+
+    <div class="hero-partners">
+      <span class="hero-partner-pill">ICe · UFRN</span>
+      <span class="hero-divider">×</span>
+      <span class="hero-partner-pill">IFRN CH</span>
+      <span class="hero-divider">×</span>
+      <span class="hero-partner-pill">UERN</span>
+    </div>
+
   </div>
-  <div class="banner-left">
-    <div class="banner-title">IFRN — Natal Centro Histórico</div>
-    <div class="banner-sub">Uma oportunidade de pesquisa aplicada à educação</div>
-  </div>
-  <div class="banner-badge">Viabilidade Comprovada</div>
-</div>
+</header>
 
-<div class="container">
+<!-- ═══ CONTEÚDO ═══ -->
+<div class="main">
 
-  <!-- INTRO -->
-  <h1>Aliança Científica em Neurociência Cognitiva &amp; Design de Mediação Educacional</h1>
-  <p style="font-size: 1rem; color: var(--ink2); max-width: 700px; margin-bottom: 2rem;">
-    Uma proposta de colaboração estratégica entre o Instituto do Cérebro (UFRN), o IFRN Campus Natal Centro Histórico e a UERN para validar cientificamente uma metodologia de educação técnica fundamentada em percepção visual, Gestalt, cognição, ética kantiana e design crítico.
-  </p>
-
-  <!-- SEÇÃO 0: QUEM PROPÕE -->
-  <div class="section" style="background: var(--blue-bg); border: 1px solid var(--blue-border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2.5rem;">
-    <div class="eyebrow">Fundamentação Científica</div>
-    <h3 style="color: var(--blue); margin-top: 0;">Prof.ª Ivana Lima — Design Gráfico, Percepção Visual &amp; Neurociência Aplicada</h3>
-
-    <p style="margin-top: 1rem;"><strong>Formação e foco de pesquisa:</strong></p>
-    <ul style="list-style: none; padding-left: 0; margin-top: .75rem;">
-      <li style="padding: .5rem 0; border-bottom: 1px solid var(--blue-border);"><strong>Design Gráfico &amp; Percepção Visual</strong> — Pesquisa em Gestalt, cognição visual, leitura de imagem e comunicação visual estratégica</li>
-      <li style="padding: .5rem 0; border-bottom: 1px solid var(--blue-border);"><strong>Estratégias de Persuasão &amp; Comunicação</strong> — Como o design influencia a atenção, compreensão e engajamento; mecanismos neurais da persuasão visual</li>
-      <li style="padding: .5rem 0; border-bottom: 1px solid var(--blue-border);"><strong>Pensamento Crítico &amp; Mediação Educacional</strong> — Desenvolvimento de materiais didáticos que estimulam questionamento, análise visual e posicionamento ético</li>
-      <li style="padding: .5rem 0;"><strong>Produtos Digitais &amp; Analógicos para Educação</strong> — Prototipagem, fabricação digital (impressão 3D, design interativo) e materialização de conceitos através do design</li>
-    </ul>
-
-    <p style="margin-top: 1rem; font-size: .9rem; color: var(--ink2);"><strong>Por que isso importa para essa aliança:</strong> Design não é decoração. Design é um modo de pensar que conecta cognição, emoção e ação. Quando você entende como o cérebro <em>percebe</em>, <em>processa</em> e <em>decide</em>, você pode desenhar experiências pedagógicas que ativam aprendizagem real — não apenas retenção de informação.</p>
+  <!-- Intro card flutuante -->
+  <div class="intro-card">
+    <p>Este documento é um convite para uma conversa. Não um relatório, não uma proposta formal — uma <strong>exploração de possibilidade</strong>: o que acontece quando neurociência de ponta se une a design educacional rigoroso para medir, com dados reais, o que funciona numa sala de aula?</p>
+    <p>Acreditamos que o Instituto do Cérebro tem exatamente o que falta nessa equação: <strong>a capacidade de transformar observação pedagógica em evidência científica</strong>.</p>
   </div>
 
-  <!-- SEÇÃO 1: SUAS LINHAS DE PESQUISA -->
+  <!-- ═══ QUEM PROPÕE ═══ -->
   <div class="section">
-    <div class="eyebrow">Seu Potencial Científico</div>
-    <h2>Áreas do Instituto do Cérebro que Convergem com Essa Pesquisa</h2>
+    <div class="eyebrow">Quem propõe</div>
+    <h2>Uma professora de Design que pensa como neurocientista</h2>
+
+    <div class="profile-card">
+      <div class="profile-card-header">
+        <div class="profile-photo">
+          <img src="assets/img/ivana-lima.jpg" alt="Prof.ª Ivana Lima">
+        </div>
+        <div class="profile-info">
+          <h3>Prof.ª Ivana Lima</h3>
+          <p>Professora de Design Gráfico · IFRN Natal Centro Histórico<br>Mestranda em Ergonomia &amp; IHC · Violinista</p>
+        </div>
+      </div>
+
+      <div class="profile-items">
+        <div class="profile-item"><strong>Percepção Visual &amp; Gestalt</strong> — pesquisa em leitura de imagem, hierarquia visual e comunicação estratégica</div>
+        <div class="profile-item"><strong>Cognição &amp; Estratégias de Persuasão</strong> — como design influencia atenção, compreensão e engajamento; mecanismos neurais da persuasão visual</div>
+        <div class="profile-item"><strong>Pensamento Crítico como Método</strong> — materiais que estimulam questionamento ativo, não consumo passivo de informação</div>
+        <div class="profile-item"><strong>Produtos Digitais &amp; Analógicos</strong> — prototipagem, fabricação digital e materialização de conceitos abstratos em artefatos concretos</div>
+      </div>
+
+      <div class="profile-insight">
+        "Design não é decoração. Design é um modo de pensar que conecta cognição, emoção e ação. Quando você entende como o cérebro percebe, processa e decide — você pode desenhar experiências pedagógicas que ativam aprendizagem real."
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ CONVERGÊNCIA COM ICe ═══ -->
+  <div class="section">
+    <div class="eyebrow">Por que o ICe</div>
+    <h2>As pesquisas de vocês são exatamente o que essa metodologia precisa validar</h2>
 
     <div class="section-intro">
-      <p>O Instituto do Cérebro não estuda "educação" — estuda <strong>memória, atenção, percepção, linguagem e emoção</strong>. Exatamente os mecanismos que precisam ser compreendidos para transformar uma sala de aula em um espaço de aprendizagem de verdade.</p>
+      <p>O Instituto do Cérebro não estuda "educação" — estuda <strong>memória, atenção, percepção, linguagem e emoção</strong>. Exatamente os mecanismos que precisam ser compreendidos para transformar uma sala de aula em um espaço de aprendizagem real.</p>
     </div>
 
     <div class="grid">
 
-      <!-- Memória e Aprendizagem -->
-      <div class="card">
+      <div class="card card-accent">
+        <span class="card-icon">🧠</span>
         <h4>Memória &amp; Aprendizagem</h4>
-        <div class="card-role">Sidarta Ribeiro, Martín Cammarota</div>
-        <p>Consolidação de memória durante a aprendizagem — como o cérebro "fixa" conhecimento novo.</p>
+        <div class="card-meta">Sidarta Ribeiro, Martín Cammarota</div>
+        <p>Consolidação de memória — como o cérebro "fixa" conhecimento novo.</p>
         <ul>
-          <li>Impacto direto na retenção de conceitos técnicos</li>
           <li>Design pedagógico pode potencializar consolidação</li>
-          <li>Métrica: dados neurais em tempo real (EEG portátil)</li>
+          <li>Métricas: EEG portátil em tempo real</li>
+          <li>Impacto direto na retenção de conceitos técnicos</li>
         </ul>
       </div>
 
-      <!-- Atenção e Ritmos -->
-      <div class="card">
+      <div class="card card-accent">
+        <span class="card-icon">⚡</span>
         <h4>Atenção &amp; Ritmos Cerebrais</h4>
-        <div class="card-role">Adriano Tort</div>
-        <p>Ritmos cerebrais (ondas theta, gamma) que sustentam atenção e processamento cognitivo.</p>
+        <div class="card-meta">Adriano Tort</div>
+        <p>Ondas theta e gamma que sustentam atenção e processamento cognitivo.</p>
         <ul>
           <li>Por que alunos "desligam" em aulas tradicionais?</li>
           <li>Como design ativa oscilações neurais de engajamento</li>
-          <li>Métrica: monitoramento de coerência neural durante aprendizado</li>
+          <li>Métrica: coerência neural durante aprendizado</li>
         </ul>
       </div>
 
-      <!-- Percepção Visual -->
-      <div class="card">
+      <div class="card card-accent">
+        <span class="card-icon">👁</span>
         <h4>Percepção Visual &amp; Design</h4>
-        <div class="card-role">Sérgio Neuenschwander, Kerstin Schmidt</div>
-        <p>Processamento visual, Gestalt, contraste — como o cérebro interpreta imagens e comunicação.</p>
+        <div class="card-meta">Sérgio Neuenschwander, Kerstin Schmidt</div>
+        <p>Processamento visual e Gestalt — como o cérebro interpreta imagens.</p>
         <ul>
-          <li>Design gráfico não é decoração — é neurociência aplicada</li>
           <li>Princípios de Gestalt otimizam carga cognitiva</li>
-          <li>Métrica: eye-tracking + fMRI em interfaces pedagógicas</li>
+          <li>Métricas: eye-tracking + análise de interfaces pedagógicas</li>
+          <li>Design gráfico como neurociência aplicada</li>
         </ul>
       </div>
 
-      <!-- Linguagem e Interação -->
-      <div class="card">
+      <div class="card card-accent">
+        <span class="card-icon">💬</span>
         <h4>Linguagem &amp; Interação Social</h4>
-        <div class="card-role">Daniel Takahashi</div>
-        <p>Comunicação, processamento de linguagem, dinâmicas sociais no aprendizado.</p>
+        <div class="card-meta">Daniel Takahashi</div>
+        <p>Comunicação e dinâmicas sociais no aprendizado colaborativo.</p>
         <ul>
-          <li>Alunos aprendem melhor juntos — mas por quê?</li>
           <li>Neurociência da mediação educacional</li>
-          <li>Métrica: análise de padrões de interação durante aprendizado colaborativo</li>
+          <li>Por que aprendemos melhor juntos?</li>
+          <li>Padrões de interação durante aprendizado ativo</li>
         </ul>
       </div>
 
     </div>
   </div>
 
-  <!-- SEÇÃO 2: O NEXO -->
-  <div class="section">
-    <div class="eyebrow">O Encontro</div>
-    <h2>Por Que Essa Aliança Faz Sentido</h2>
+  <div class="section-divider"></div>
 
-    <p>Aqui está o encontro crítico: Prof.ª Ivana traz <strong>design fundamentado em neurociência</strong> — não é intuição, é pesquisa em percepção visual, Gestalt e cognição. Você (ICe/UFRN) traz <strong>rigor científico</strong> — a capacidade de medir se esse design realmente funciona no cérebro do aluno.</p>
+  <!-- ═══ O ENCONTRO ═══ -->
+  <div class="section">
+    <div class="eyebrow">O encontro</div>
+    <h2>A pergunta que nenhum lado consegue responder sozinho</h2>
+
+    <p>Prof.ª Ivana traz <strong>design fundamentado em neurociência</strong> — não intuição, mas pesquisa em percepção visual, Gestalt e cognição. O ICe/UFRN traz <strong>rigor científico</strong> — a capacidade de medir se esse design realmente funciona no cérebro do aluno.</p>
 
     <div class="highlight">
-      <h4>A Pergunta que Nenhum Deles Consegue Responder Sozinho</h4>
-      <p><strong>"Quando você desenha uma interface pedagógica com princípios de Gestalt, reduz a carga cognitiva e ativa o pensamento crítico — o que está acontecendo *neurologicamente* durante esse processo?"</strong></p>
-      <p style="margin-top: .75rem; font-style: italic; color: var(--ink3);">Não por avaliação de usabilidade ou feedback anedótico — por dados neurais mensuráveis (EEG, sincronização neural, padrões de atenção).</p>
+      <h4>"Quando você desenha uma interface pedagógica com princípios de Gestalt — o que está acontecendo neurologicamente durante esse processo?"</h4>
+      <p>Não por avaliação de usabilidade ou feedback anedótico — por <strong>dados neurais mensuráveis</strong>: EEG, sincronização neural, padrões de atenção sustentada.</p>
+      <p style="font-style: italic; color: var(--ink3);">Essa é a pergunta que conecta design e neurociência. E nenhuma das duas áreas consegue respondê-la isoladamente.</p>
     </div>
 
-    <h3>O que você oferece:</h3>
-    <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
-      <li style="padding: .5rem 0; border-bottom: 1px solid var(--rule);"><strong>Instrumentos de medição</strong> — EEG portátil, eye-tracking, análise de sincronização neural</li>
-      <li style="padding: .5rem 0; border-bottom: 1px solid var(--rule);"><strong>Rigor metodológico</strong> — design experimental que aguenta revisão científica</li>
-      <li style="padding: .5rem 0; border-bottom: 1px solid var(--rule);"><strong>Base para publicação</strong> — artigos em periódicos de educação e neurociência</li>
-      <li style="padding: .5rem 0;"><strong>Impacto acadêmico</strong> — demonstra como neurociência molda pedagogia</li>
+    <h3>O que cada parte oferece à pesquisa</h3>
+    <div class="grid grid-2">
+
+      <div class="card card-accent green">
+        <h4>ICe · UFRN oferece</h4>
+        <ul>
+          <li>Instrumentação: EEG portátil, eye-tracking</li>
+          <li>Design experimental com rigor científico</li>
+          <li>Análise de sincronização neural</li>
+          <li>Co-autoria em publicações</li>
+          <li>Coordenação como co-PI em editais</li>
+        </ul>
+      </div>
+
+      <div class="card card-accent green">
+        <h4>IFRN · Ivana Lima oferece</h4>
+        <ul>
+          <li>Artefatos educacionais com base em Gestalt</li>
+          <li>Turmas reais como campo de pesquisa</li>
+          <li>Metodologia pedagógica documentada</li>
+          <li>Produtos digitais e analógicos mensuráveis</li>
+          <li>Observações qualitativas de engajamento</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ O QUE É DESIGN AQUI ═══ -->
+  <div class="section">
+    <div class="eyebrow">A metodologia</div>
+    <h2>O que significa "Design de Mediação Educacional" nesse contexto</h2>
+
+    <div class="infobox">
+      <p><strong>Não é:</strong> decorar slides, criar infográficos bonitos ou gamificar conteúdo sem propósito.</p>
+      <p><strong>É:</strong> projetar artefatos — digitais e analógicos — que:</p>
+    </div>
+
+    <ul class="arrow-list">
+      <li><strong>Reduzem carga cognitiva</strong> — hierarquia visual, contraste e Gestalt fazem o aluno trabalhar <em>com</em> a interface, não contra ela</li>
+      <li><strong>Ativam pensamento crítico</strong> — o design questiona, não apenas informa. O aluno analisa, compara, toma posição</li>
+      <li><strong>Incorporam persuasão ética</strong> — entender como a comunicação visual influencia para usar esse conhecimento com honestidade</li>
+      <li><strong>Materializam conceitos</strong> — ideias abstratas viram objetos, protótipos, experiências concretas que o aluno pode tocar e transformar</li>
     </ul>
-  </div>
 
-  <!-- SEÇÃO 3: O PROJETO -->
-  <div class="section">
-    <div class="eyebrow">A Estrutura</div>
-    <h2>Como a Aliança Funcionaria</h2>
-
-    <div class="grid" style="grid-template-columns: 1fr 1fr; margin-top: 1.5rem;">
-
-      <div class="card amber">
-        <h4>🧠 Papel do ICe/UFRN</h4>
-        <ul>
-          <li>Desenhar protocolo neurocientifico (EEG portátil, fMRI pontual)</li>
-          <li>Treinar equipe IFRN em coleta de dados</li>
-          <li>Analisar dados coletados em contexto pedagógico</li>
-          <li>Co-autoria em publicações científicas</li>
-          <li>Coordenação de pesquisador como co-PI em editais</li>
-        </ul>
-      </div>
-
-      <div class="card amber">
-        <h4>🏫 Papel do IFRN CH — Prof.ª Ivana Lima</h4>
-        <ul>
-          <li>Desenho de artefatos educacionais (digitais + analógicos) com fundamentação em percepção visual e Gestalt</li>
-          <li>Aplicação de estratégias de comunicação visual para otimizar atenção e processamento cognitivo</li>
-          <li>Integração do pensamento crítico nas atividades (aluno não é consumidor passivo de design, mas analisador ativo)</li>
-          <li>Execução da metodologia pedagógica com foco em mediação educacional através do design</li>
-          <li>Coleta de observações qualitativas sobre engajamento visual e comportamento cognitivo durante aula</li>
-          <li>Coordenação com ICe/UFRN na instrumentação e validação científica</li>
-          <li>Documentação: portfolio de produtos criados + análise de processo pedagógico</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <h3 style="margin-top: 2rem;">O Que Significa "Design de Mediação Educacional" Nesse Contexto</h3>
-    <div style="background: var(--paper2); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem;">
-      <p><strong>Não é:</strong> Decorar slides, criar infográficos bonitos, ou "gamificar" conteúdo sem propósito.</p>
-      <p style="margin-top: .75rem;"><strong>É:</strong> Projetar artefatos (digitais e analógicos) que:</p>
-      <ul style="list-style: none; padding-left: 0; margin-top: .75rem;">
-        <li style="padding: .3rem 0;"><strong>→ Reduzem carga cognitiva</strong> através de hierarquia visual, contraste, Gestalt — o aluno não trabalha "contra" a interface, mas *com* ela</li>
-        <li style="padding: .3rem 0;"><strong>→ Ativam pensamento crítico</strong> — o design *questiona*, não apenas *informa*. O aluno é convidado a analisar, comparar, tomar posição</li>
-        <li style="padding: .3rem 0;"><strong>→ Incorporam persuasão ética</strong> — entender *como* a comunicação visual funciona para influenciar, e usar esse conhecimento de forma honesta (não manipuladora)</li>
-        <li style="padding: .3rem 0;"><strong>→ Materializam conceitos</strong> — ideias abstratas se tornam objetos, protótipos, experiências concretas que o aluno pode tocar, manipular, transformar</li>
-      </ul>
-      <p style="margin-top: 1rem; font-size: .9rem; color: var(--ink3);"><em>Exemplo:</em> Em vez de um slide sobre "impressão 3D", o aluno aprende geometria, design e fabricação digital *criando um objeto 3D*. Aprende ética kantiana *discutindo as implicações éticas de seu design*. O artefato é a pedagogia.</p>
-    </div>
-
-    <h3 style="margin-top: 2rem;">Fases de Execução</h3>
-    <div style="margin-top: 1rem; border-left: 3px solid var(--blue); padding-left: 1.5rem; color: var(--ink2);">
-      <p><strong>Fase 1 (Abr–Jun 2026):</strong> Piloto mínimo — 1 turma, 1 disciplina, 8-10 semanas de coleta de dados</p>
-      <p style="margin-top: .75rem;"><strong>Fase 2 (Jul–Set 2026):</strong> Análise de dados + escrita de artigo colaborativo</p>
-      <p style="margin-top: .75rem;"><strong>Fase 3 (Out 2026+):</strong> Publicação + escala para turmas adicionais + submissão de edital para continuação</p>
+    <div class="infobox" style="margin-top: 1.25rem; border-left: 3px solid var(--amber); background: var(--amber-light);">
+      <p style="font-size: .875rem; font-style: italic; color: var(--ink2);"><strong>Exemplo concreto:</strong> Em vez de um slide sobre impressão 3D, o aluno aprende geometria, design e fabricação digital <em>criando um objeto 3D</em>. Aprende ética kantiana <em>discutindo as implicações éticas do seu próprio design</em>. O artefato é a pedagogia.</p>
     </div>
   </div>
 
-  <!-- SEÇÃO 4: VIABILIDADE FINANCEIRA -->
+  <div class="section-divider"></div>
+
+  <!-- ═══ FASES ═══ -->
   <div class="section">
-    <div class="eyebrow">Recursos</div>
-    <h2>Por Que Isso é Viável Financeiramente</h2>
+    <div class="eyebrow">Como começar</div>
+    <h2>Três fases, começando pelo mínimo viável</h2>
 
-    <div class="grid" style="margin-top: 1.5rem;">
-
-      <div class="card">
-        <h4>EEG Portátil — Custo Controlado</h4>
-        <p>Equipamento já existente no mercado (Emotiv, Muse, OpenBCI) — não precisa comprar aparato hospitalar de R$ 200k+. Custo de 1-2 headsets portáteis: R$ 3-8k.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">Abr – Jun 2026 · Piloto</div>
+          <p>Uma turma, uma disciplina, 8–10 semanas de coleta de dados com EEG portátil. Objetivo: validar protocolo, identificar métricas relevantes, gerar dados preliminares.</p>
+        </div>
       </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">Jul – Set 2026 · Análise</div>
+          <p>Análise de dados neurais + observações pedagógicas. Escrita colaborativa de artigo para periódico de neurociência educacional ou cognição.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-content">
+          <div class="timeline-phase">Out 2026+ · Escala</div>
+          <p>Publicação + expansão para outras turmas e disciplinas. Submissão de edital CNPq/CAPES para financiamento continuado. Potencial de parceria internacional (ECNU, NYU Shanghai).</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <div class="card">
+  <div class="section-divider"></div>
+
+  <!-- ═══ VIABILIDADE ═══ -->
+  <div class="section">
+    <div class="eyebrow">Viabilidade</div>
+    <h2>Começa pequeno, escala com evidência</h2>
+
+    <div class="grid">
+      <div class="card card-accent amber">
+        <span class="card-icon">📡</span>
+        <h4>EEG Portátil — Acessível</h4>
+        <p>Emotiv, Muse, OpenBCI — não é fMRI hospitalar. Custo de 1–2 headsets: <strong>R$ 3–8k</strong>. Tecnologia já validada para pesquisa em contexto educacional.</p>
+      </div>
+      <div class="card card-accent amber">
+        <span class="card-icon">👥</span>
         <h4>Equipe Já Existe</h4>
-        <p>Você já tem pesquisadores no ICe, professora no IFRN, filósofo na UERN. Custo inicial é <strong>integração</strong>, não criação de equipe.</p>
+        <p>Pesquisadores no ICe, professora no IFRN, filósofo na UERN. O custo inicial é <strong>integração</strong>, não construção de equipe do zero.</p>
       </div>
-
-      <div class="card">
-        <h4>Financiamento Disponível</h4>
-        <p>CNPq Universal, CAPES PRINT, Huawei Seeds for the Future — editais que cobrem pesquisas interinstitucionais com neurociência aplicada à educação.</p>
+      <div class="card card-accent amber">
+        <span class="card-icon">💰</span>
+        <h4>Financiamento Mapeado</h4>
+        <p>CNPq Universal, CAPES PRINT, SETEC/MEC IF-Maker, Huawei Seeds for the Future — editais alinhados com pesquisa interinstitucional em neurociência aplicada.</p>
       </div>
-
-      <div class="card">
+      <div class="card card-accent amber">
+        <span class="card-icon">📈</span>
         <h4>Modelo Escalonável</h4>
-        <p>Começa como piloto (baixo custo), gera dados científicos, abre porta para financiamento maior para replicação.</p>
+        <p>Piloto de baixo custo gera dados, dados geram publicação, publicação abre financiamento maior. Risco controlado, potencial alto.</p>
       </div>
-
     </div>
 
-    <div class="highlight" style="margin-top: 2rem;">
-      <h4>Investimento Estimado — Fase 1 (Piloto)</h4>
-      <p><strong>R$ 25-35 mil:</strong> EEG portátil, software de análise, viagens (reuniões ICe-IFRN), bolsa parcial para estudante analisando dados</p>
-      <p style="margin-top: .75rem; font-size: .85rem; color: var(--ink3);"><em>Coberto por: CNPq Universal, Edital SETEC/MEC IF-Maker, ou recursos internos IFRN + UFRN</em></p>
+    <div class="highlight" style="margin-top: 1.75rem;">
+      <h4>Investimento estimado — Fase 1 (Piloto)</h4>
+      <p><strong>R$ 25–35 mil:</strong> EEG portátil, software de análise, deslocamentos ICe–IFRN, bolsa parcial para aluno pesquisador.</p>
+      <p style="font-style: italic; color: var(--ink3); font-size: .85rem;">Coberto por: CNPq Universal · SETEC/MEC IF-Maker · Recursos internos IFRN + UFRN</p>
     </div>
   </div>
 
-  <!-- SEÇÃO 5: POR QUE AGORA? -->
-  <div class="section">
-    <div class="eyebrow">Contexto</div>
-    <h2>Por Que Esse É o Momento Certo</h2>
+  <!-- ═══ CTA ═══ -->
+  <div class="cta-section">
+    <h2>Vamos conversar?</h2>
+    <p>Uma reunião de alinhamento — sem compromisso — para explorar se essa aliança ressoa com as prioridades do Instituto do Cérebro e o interesse em validar cientificamente uma metodologia pedagógica baseada em design e neurociência.</p>
 
-    <p style="font-size: 1rem; margin-bottom: 1.5rem;">O Brasil está entrando em um momento de oportunidade única:</p>
+    <div class="cta-inner">
 
-    <div style="background: var(--paper2); border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0;">
-      <p><strong>1. Educação técnica em transição</strong> — IFRN está repensndo currículo, aberto a inovação pedagógica</p>
-      <p style="margin-top: 1rem;"><strong>2. Financiamento em neurociência crescendo</strong> — CNPq + CAPES criaram linhas específicas para neurociência + aplicações (educação, saúde)</p>
-      <p style="margin-top: 1rem;"><strong>3. Ferramentas acessíveis</strong> — EEG portátil ficou barato e confiável; IA generativa reduz fricção técnica</p>
-      <p style="margin-top: 1rem;"><strong>4. Demanda internacional</strong> — ECNU (China), NYU Shanghai estudam exatamente isso; potencial para colaboração global</p>
-    </div>
-
-  </div>
-
-  <!-- CTA -->
-  <div class="cta-block">
-    <h3>Vamos Conversar?</h3>
-    <p>Uma conversa inicial para explorar se essa aliança ressoa com as prioridades do Instituto do Cérebro — especificamente, o interesse em validar cientificamente uma metodologia de design educacional fundamentada em neurociência cognitiva, percepção visual e pensamento crítico.</p>
-    <p style="margin-top: .75rem; font-size: .875rem; color: var(--ink3);">Sem compromisso. Apenas alinhamento sobre potencial científico e interesse mútuo em publicação de resultados.</p>
-
-    <div class="cta-contact-wrap">
-
-      <!-- Dados de contato -->
-      <div class="cta-contact">
-        <div class="cta-contact-name">Prof.ª Ivana Lima</div>
-        <div class="cta-contact-role">
-          Professora de Design Gráfico · IFRN Natal Centro Histórico<br>
-          Mestranda em Ergonomia &amp; IHC · Pesquisa em Percepção Visual e Mediação Educacional
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <div class="contact-card-photo">
+            <img src="assets/img/ivana-lima.jpg" alt="Ivana Lima">
+          </div>
+          <div>
+            <div class="contact-card-name">Prof.ª Ivana Lima</div>
+            <div class="contact-card-role">Design Gráfico · IFRN NCH<br>Mestranda Ergonomia &amp; IHC</div>
+          </div>
         </div>
-
-        <!-- E-mail institucional -->
-        <div class="cta-contact-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          <a href="mailto:ivana.lima@ifrn.edu.br">ivana.lima@ifrn.edu.br</a>
-        </div>
-
-        <!-- WhatsApp -->
-        <div class="cta-contact-item whatsapp">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          <a href="https://wa.me/5584994615508" target="_blank">WhatsApp — (84) 99461-5508</a>
-        </div>
-
-        <!-- IFRN -->
-        <div class="cta-contact-item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <span>IFRN Campus Natal Centro Histórico</span>
+        <div class="contact-items">
+          <a class="contact-item" href="mailto:ivana.lima@ifrn.edu.br">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            ivana.lima@ifrn.edu.br
+          </a>
+          <a class="contact-item wa" href="https://wa.me/5584994615508?text=Ol%C3%A1%20Prof.%C2%AA%20Ivana%2C%20vi%20sua%20proposta%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp · (84) 99461-5508
+          </a>
+          <span class="contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            IFRN Campus Natal Centro Histórico
+          </span>
         </div>
       </div>
 
-      <!-- QR Code -->
-      <div class="qr-wrap">
-        <div class="qr-label">Escanear para contato</div>
+      <div class="qr-card">
+        <div class="qr-label">Cartão digital</div>
         <div id="qrcode"></div>
-        <div style="font-size:.7rem;color:var(--ink3);text-align:center;max-width:120px;line-height:1.4;">Abre cartão digital com contatos</div>
+        <div class="qr-hint">Escanear para abrir contato completo</div>
       </div>
 
     </div>
-  </div>
 
-  <div class="footer">
-    Documento de alinhamento estratégico · IFRN Campus Natal Centro Histórico · Abril 2026<br>
-    Prof.ª Ivana Lima — Design Gráfico, Percepção Visual &amp; Mediação Educacional
+    <p class="cta-note">Sem compromisso. Apenas alinhamento sobre interesse mútuo em pesquisa e publicação.</p>
   </div>
 
 </div>
 
-<!-- QR Code: qrcode.js via CDN -->
+<div class="footer">
+  Convite de colaboração estratégica · IFRN Campus Natal Centro Histórico · Abril 2026<br>
+  Prof.ª Ivana Lima — Design Gráfico · Percepção Visual · Mediação Educacional
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
   new QRCode(document.getElementById('qrcode'), {
