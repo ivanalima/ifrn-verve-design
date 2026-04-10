@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFRN Centro Histórico — Educação, Tecnologia e Ética</title>
+<meta name="description" content="Projeto interinstitucional do IFRN Centro Histórico que une Filosofia Kantiana, Design e Neurociência para transformar a educação técnica e tecnológica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/infographics.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo"><span>IFRN</span> Centro Histórico</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#problema" class="nav-link">Problema</a></li>
+    <li><a href="#proposta" class="nav-link">Proposta</a></li>
+    <li><a href="#pilares" class="nav-link">Pilares</a></li>
+    <li><a href="#transformacao" class="nav-link">Transformação</a></li>
+    <li><a href="#rede" class="nav-link">Rede</a></li>
+    <li><a href="#equipe" class="nav-link">Equipe</a></li>
+    <li><a href="#contato" class="nav-link">Contato</a></li>
+  </ul>
+  <a href="viabilidade.html" class="nav-badge" style="text-decoration:none;cursor:pointer" title="Levantamento de Viabilidade">Viabilidade ↗</a>
+  <span class="nav-badge">IFRN · UERN · ICe/UFRN</span>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="section hero" id="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">IFRN — Projeto Interinstitucional 2026</p>
+    <h1>Educação, <em>Tecnologia</em> e Ética no IFRN Centro Histórico</h1>
+    <p class="hero-sub">Uma proposta para transformar o IFRN Centro Histórico em ponto de interseção entre educação e tecnologia — onde a ética kantiana orienta a criação, o design materializa o conhecimento e a neurociência valida a aprendizagem.</p>
+    <div class="hero-tags">
+      <span class="tag green">Filosofia Kantiana</span>
+      <span class="tag blue">Design &amp; Fabricação Digital</span>
+      <span class="tag amber">Neurociência Cognitiva</span>
+      <span class="tag">IFRN · UERN · ICe/UFRN</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#proposta" class="btn btn-primary">Conheça o Projeto</a>
+      <a href="#contato" class="btn btn-secondary">Faça Parte</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== O PROBLEMA ========== -->
+<section class="section section-problema" id="problema">
+  <div class="section-inner">
+    <div class="section-header" data-reveal="fade-up">
+      <p class="eyebrow">O Diagnóstico</p>
+      <h2>O Capitalismo Digital e o Sequestro do Futuro Jovem</h2>
+    </div>
+
+    <div data-reveal="fade-up" data-delay="1">
+      <p>O capitalismo contemporâneo, amplificado pela cultura digital, criou um ecossistema que captura sistematicamente a atenção dos jovens. Smartphones transformados em máquinas de entretenimento e plataformas projetadas para maximizar engajamento aplicam o que Edward Bernays chamou de <strong>"engenharia do consentimento"</strong> — agora potencializada pela neurociência e pela inteligência artificial.</p>
+      <p>O resultado é uma geração sem horizonte, incapaz de projetar o próprio futuro. Na sala de aula, o déficit de atenção e motivação se aprofundou: a nota substituiu o processo como único fator motivador. Os alunos estão cansados de um sistema educacional que mantém a infraestrutura tradicional enquanto o mundo se transforma ao redor.</p>
+    </div>
+
+    <div class="problema-stats" data-reveal="fade-up" data-delay="2">
+      <div class="stat-card">
+        <div class="stat-number red" data-count="7" data-suffix="h/dia">0</div>
+        <div class="stat-label">Tempo médio de tela entre jovens brasileiros</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number red" data-count="72" data-suffix="%">0</div>
+        <div class="stat-label">Professores relatam queda de atenção pós-pandemia</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number amber" data-count="85" data-suffix="%">0</div>
+        <div class="stat-label">Alunos motivados pela nota, não pelo processo</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number green" data-count="3" data-suffix="x">0</div>
+        <div class="stat-label">Mais engajamento quando o aluno é produtor ativo</div>
+      </div>
+    </div>
+
+    <div class="quote" data-reveal="fade-up" data-delay="3">
+      <p>"As mentes dos jovens estão sendo capturadas por infraestruturas bem pensadas para fazer isso — o desafio é criar infraestruturas igualmente sofisticadas para libertá-las."</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== A PROPOSTA ========== -->
+<section class="section" id="proposta">
+  <div class="section-inner">
+    <div class="section-header" data-reveal="fade-up">
+      <p class="eyebrow">A Proposta</p>
+      <h2>O IFRN como Ponto de Interseção</h2>
+      <p>Transformar o IFRN Centro Histórico em um espaço onde educação e tecnologia se encontram com base ética — onde professores e alunos materializam conhecimento, resolvem problemas reais e produzem artefatos educacionais com propósito.</p>
+    </div>
+
+    <div class="proposta-features" data-reveal="fade-up" data-delay="1">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--green-bg);color:var(--green)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Ruptura com a Dependência Cultural</h3>
+        <p>Parar de importar soluções prontas. Estimular os sujeitos a pensar e resolver problemas a partir do contexto local, com meios de produção acessíveis — da impressão 3D à IA generativa.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--blue-bg);color:var(--blue)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3>IA como Redutora de Fricção</h3>
+        <p>A execução técnica frequentemente interrompe o fluxo criativo. Com a IA operando em linguagem natural, o sujeito pode articular ideias e avançar para a materialização com menos barreiras.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--amber-bg);color:var(--amber)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Aluno como Produtor Ativo</h3>
+        <p>A pergunta muda de "o que eu preciso saber para a prova?" para <strong>"o que eu posso criar e resolver com o que estou aprendendo?"</strong></p>
+      </div>
+    </div>
+
+    <div class="quote" data-reveal="fade-up" data-delay="2">
+      <p>"Materializar ideias de forma mais fluida e humanizada, com suporte das IAs, pode ser um fator decisivo de motivação — especialmente para uma geração habituada à passividade tecnológica."</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== OS TRÊS PILARES ========== -->
+<section class="section" id="pilares">
+  <div class="section-inner">
+    <div class="section-header" data-reveal="fade-up">
+      <p class="eyebrow">O Modelo</p>
+      <h2>Três Pilares, Um Ciclo Virtuoso</h2>
+      <p>A integração entre Filosofia, Design e Neurociência cria um ecossistema educacional completo: a filosofia inspira a questão, o design cria o projeto prático, e a neurociência valida a aprendizagem.</p>
+    </div>
+
+    <!-- Diagrama SVG triangular -->
+    <div class="diagram-container diagram" data-reveal="scale">
+      <svg viewBox="0 0 520 450" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama dos três pilares: Filosofia, Design e Neurociência conectados em ciclo">
+        <!-- Setas de conexão -->
+        <path class="connection-path svg-line" d="M200 105 L100 290" style="--line-length:210" stroke-width="2"/>
+        <path class="connection-path svg-line" d="M100 320 L380 320" style="--line-length:280" stroke-width="2"/>
+        <path class="connection-path svg-line" d="M410 290 L310 105" style="--line-length:210" stroke-width="2"/>
+
+        <!-- Setas -->
+        <polygon class="connection-arrow" points="105,280 90,296 115,290" />
+        <polygon class="connection-arrow" points="370,318 382,330 382,308" />
+        <polygon class="connection-arrow" points="315,115 330,100 305,105" />
+
+        <!-- Label central -->
+        <text class="diagram-center-label" x="260" y="230">IFRN</text>
+        <text class="diagram-center-label" x="260" y="250" style="font-size:11px">Centro Histórico</text>
+
+        <!-- Nó: Filosofia (topo) -->
+        <g class="pillar-node node-filosofia" data-pillar="filosofia" role="button" tabindex="0" aria-label="Pilar Filosofia Kantiana">
+          <circle cx="260" cy="75" r="52"/>
+          <text x="260" y="70">Filosofia</text>
+          <text class="node-sub" x="260" y="88">O Porquê</text>
+        </g>
+
+        <!-- Nó: Design (esquerda) -->
+        <g class="pillar-node node-design" data-pillar="design" role="button" tabindex="0" aria-label="Pilar Design">
+          <circle cx="95" cy="340" r="52"/>
+          <text x="95" y="335">Design</text>
+          <text class="node-sub" x="95" y="353">O Como</text>
+        </g>
+
+        <!-- Nó: Neurociência (direita) -->
+        <g class="pillar-node node-neuro" data-pillar="neuro" role="button" tabindex="0" aria-label="Pilar Neurociência">
+          <circle cx="425" cy="340" r="52"/>
+          <text x="425" y="328">Neuro</text>
+          <text x="425" y="345" style="font-size:13px;font-weight:500;text-anchor:middle;fill:var(--ink)">ciência</text>
+          <text class="node-sub" x="425" y="363">A Validação</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Painéis de detalhe (accordion) -->
+    <div class="pillar-detail" id="detail-filosofia">
+      <div class="pillar-detail-inner" style="border-left: 4px solid var(--green)">
+        <h3 style="color:var(--green)">Filosofia Kantiana — O Porquê</h3>
+        <p style="margin-top:.75rem">A ética kantiana fornece a base moral do projeto: tratar cada aluno como fim em si mesmo, nunca como meio. Em vez de apenas ensinar uma técnica, o aluno é incentivado a questionar: <strong>"Por que isso é importante? Qual o impacto na minha comunidade?"</strong></p>
+        <p>Como demonstra a tese do Prof. Dr. Rogério Alcoforado (UERN) — <em>"Da condição moral do homem em Kant a uma tese empírica sobre a origem da moral na humanidade"</em> — a moral tem funcionalidade para a espécie humana, e a pedagogia moral é inseparável do aperfeiçoamento humano. A educação não é apenas transmissão de conteúdo: é construção da condição moral do sujeito.</p>
+      </div>
+    </div>
+
+    <div class="pillar-detail" id="detail-design">
+      <div class="pillar-detail-inner" style="border-left: 4px solid var(--blue)">
+        <h3 style="color:var(--blue)">Design — O Como</h3>
+        <p style="margin-top:.75rem">O design traduz o propósito filosófico em ação concreta. Permite que os alunos <strong>materializem</strong> o conhecimento através da criação de artefatos — digitais (multimídia, web, aplicativos) e analógicos (impressão 3D em filamento PLA, resina, materiais físicos).</p>
+        <p>Ao se envolverem em processos práticos para solucionar problemas reais da sua comunidade, os alunos se tornam produtores de conhecimento. O aprendizado se torna tangível e com finalidade clara.</p>
+      </div>
+    </div>
+
+    <div class="pillar-detail" id="detail-neuro">
+      <div class="pillar-detail-inner" style="border-left: 4px solid var(--amber)">
+        <h3 style="color:var(--amber)">Neurociência Cognitiva — A Validação</h3>
+        <p style="margin-top:.75rem">No Instituto do Cérebro (ICe/UFRN), a educação não é estudada como "educação" — ela é estudada como <strong>memória, atenção, percepção, linguagem e emoção</strong>. Isso bate diretamente com o que se trabalha em design e comunicação visual.</p>
+        <p>Pesquisas mostram que a aprendizagem depende de emoção + atenção + repetição, e que o cérebro aprende melhor com imagens, narrativa e contraste visual — princípios que conectam diretamente com a Gestalt e o design. O ICe oferece ferramentas para medir cientificamente o engajamento, validando quais abordagens pedagógicas realmente funcionam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== TRANSFORMAÇÃO (SLIDER) ========== -->
+<section class="section" id="transformacao">
+  <div class="section-inner">
+    <div class="section-header" data-reveal="fade-up">
+      <p class="eyebrow">A Transformação</p>
+      <h2>Da Educação Passiva à Educação Ativa</h2>
+      <p>Arraste o controle para comparar os dois modelos educacionais.</p>
+    </div>
+
+    <div class="comparison-container" data-reveal="scale" style="--slider-pos:50%;--clip-right:50%">
+      <div class="comparison-side comparison-before">
+        <h3>Educação Tradicional</h3>
+        <ul class="comparison-list">
+          <li>Aluno como consumidor passivo de informações</li>
+          <li>Motivação focada exclusivamente na nota</li>
+          <li>Conteúdo abstrato, desconectado da realidade</li>
+          <li>Infraestrutura rígida e modelo mercantilizado</li>
+          <li>Avaliação por reprodução de conteúdo</li>
+          <li>Dependência de soluções importadas</li>
+        </ul>
+      </div>
+      <div class="comparison-side comparison-after">
+        <div style="margin-left:52%">
+          <h3>Proposta IFRN</h3>
+          <ul class="comparison-list">
+            <li>Aluno como produtor ativo de conhecimento</li>
+            <li>Engajamento pelo processo e pela criação</li>
+            <li>Resolução de problemas reais da comunidade</li>
+            <li>Laboratórios de criação com fabricação digital</li>
+            <li>Validação científica do engajamento</li>
+            <li>Soluções pensadas para o contexto local</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comparison-handle" role="slider" aria-label="Controle de comparação" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== REDE INSTITUCIONAL ========== -->
+<section class="section" id="rede">
+  <div class="section-inner">
+    <div class="section-header" data-reveal="fade-up">
+      <p class="eyebrow">A Rede</p>
+      <h2>Colaboração Interinstitucional</h2>
+      <p>Um projeto que articula, institucionalmente, diferentes áreas do conhecimento e instituições do Rio Grande do Norte — com o IFRN Centro Histórico como eixo articulador.</p>
+    </div>
+
+    <!-- Diagrama de rede SVG — IFRN central, 2 parceiros -->
+    <div class="rede-diagram diagram" data-reveal="scale">
+      <svg viewBox="0 0 650 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rede de colaboração institucional">
+        <!-- Linhas de conexão -->
+        <line class="rede-line" x1="325" y1="160" x2="120" y2="160" data-target="uern"/>
+        <line class="rede-line" x1="325" y1="160" x2="530" y2="160" data-target="ice"/>
+
+        <!-- Nó central: IFRN (maior) -->
+        <g class="rede-node center" data-inst="ifrn" role="button" tabindex="0">
+          <circle cx="325" cy="160" r="60"/>
+          <text x="325" y="150" style="font-size:16px;font-weight:500;text-anchor:middle;fill:var(--ink)">IFRN</text>
+          <text class="rede-role" x="325" y="170" style="font-size:10px">Centro Histórico</text>
+          <text class="rede-role" x="325" y="184" style="font-size:9px;fill:var(--ink3)">Eixo Articulador</text>
+        </g>
+
+        <!-- UERN -->
+        <g class="rede-node satellite" data-inst="uern" role="button" tabindex="0">
+          <circle cx="120" cy="160" r="48"/>
+          <text x="120" y="152" style="font-size:14px;font-weight:500;text-anchor:middle;fill:var(--ink)">UERN</text>
+          <text class="rede-role" x="120" y="170">Filosofia Kantiana</text>
+        </g>
+
+        <!-- Instituto do Cérebro (UFRN) -->
+        <g class="rede-node satellite" data-inst="ice" role="button" tabindex="0">
+          <circle cx="530" cy="160" r="48"/>
+          <text x="530" y="145" style="font-size:11px;font-weight:500;text-anchor:middle;fill:var(--ink)">Instituto do</text>
+          <text x="530" y="162" style="font-size:11px;font-weight:500;text-anchor:middle;fill:var(--ink)">Cérebro</text>
+          <text class="rede-role" x="530" y="178">UFRN</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="rede-details" data-reveal="fade-up" data-delay="1">
+      <div class="rede-card" data-inst="ifrn">
+        <h4>IFRN — Campus Natal Centro Histórico</h4>
+        <p>Eixo articulador do projeto. O Curso Técnico em Multimídia Integrado oferece a infraestrutura, os professores e os alunos-produtores. O laboratório do campus é o espaço de criação e mediação educacional onde os artefatos são projetados, produzidos e testados.</p>
+      </div>
+      <div class="rede-card" data-inst="uern">
+        <h4>UERN — Filosofia Kantiana</h4>
+        <p>O Prof. Dr. Rogério Emiliano Alcoforado, doutor em Filosofia pela UFRN, sustenta a base ética do projeto. Sua tese — <em>"Da condição moral do homem em Kant a uma tese empírica sobre a origem da moral na humanidade"</em> — investiga a funcionalidade da moral para a espécie humana, articulando Kant com a questão pedagógica do aperfeiçoamento moral.</p>
+      </div>
+      <div class="rede-card" data-inst="ice">
+        <h4>Instituto do Cérebro — UFRN</h4>
+        <p>Centro de excelência em neurociência com interface direta com educação através das áreas de cognição, aprendizagem e memória, linguagem e percepção visual. Pesquisadores como Sidarta Ribeiro (memória e aprendizagem), Adriano Tort (atenção e cognição), Sérgio Neuenschwander e Kerstin Schmidt (percepção visual) oferecem a base científica para validar as abordagens pedagógicas do projeto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== NEUROCIÊNCIA E EDUCAÇÃO ========== -->
+<section class="section" id="neurociencia">
+  <div class="section-inner">
+    <div class="section-header" data-reveal="fade-up">
+      <p class="eyebrow">A Conexão Decisiva</p>
+      <h2>Onde a Neurociência Encontra a Educação</h2>
+      <p>No Instituto do Cérebro (ICe/UFRN), a educação é estudada através de seus mecanismos fundamentais: memória, atenção, percepção, linguagem e emoção. Estas são as linhas de pesquisa com interface direta com o projeto.</p>
+    </div>
+
+    <div class="grid-2" data-reveal="fade-up" data-delay="1">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--amber-bg);color:var(--amber)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5-3 7h-8c-1-2-3-4-3-7a7 7 0 0 1 7-7z"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
+        </div>
+        <h3>Memória e Aprendizagem</h3>
+        <p>Sidarta Ribeiro e Martín Cammarota investigam mecanismos de consolidação da memória e aprendizagem — base científica direta para entender como o aluno retém e processa conhecimento.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--blue-bg);color:var(--blue)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Atenção e Ritmos Cerebrais</h3>
+        <p>Adriano Tort estuda ritmos cerebrais e cognição — fundamental para compreender os mecanismos de atenção, processamento e engajamento na sala de aula.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--green-bg);color:var(--green)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <h3>Percepção Visual e Design</h3>
+        <p>Sérgio Neuenschwander e Kerstin Schmidt trabalham com processamento visual, percepção e leitura de imagem — conexão direta com design, comunicação visual e princípios da Gestalt.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--amber-bg);color:var(--amber)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Linguagem e Interação Social</h3>
+        <p>Daniel Takahashi pesquisa comunicação e comportamento, com interface direta em linguagem e interação social — elementos centrais na mediação educacional.</p>
+      </div>
+    </div>
+
+    <div class="quote" data-reveal="fade-up" data-delay="2">
+      <p>"O designer que entende o cérebro ensina melhor do que o pedagogo que ignora a percepção visual. A aprendizagem depende de emoção, atenção e repetição — e o cérebro aprende melhor com imagens, narrativa e contraste visual."</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== EQUIPE ========== -->
+<section class="section" id="equipe">
+  <div class="section-inner">
+    <div class="section-header" data-reveal="fade-up">
+      <p class="eyebrow">Equipe</p>
+      <h2>Quem Articula este Projeto</h2>
+    </div>
+
+    <!-- Ivana -->
+    <div class="pesquisadora-card" data-reveal="fade-up" data-delay="1" style="margin-bottom:1.5rem">
+      <div class="pesquisadora-foto">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="pesquisadora-info">
+        <h3>Prof.ª Ivana Lima</h3>
+        <p class="pesquisadora-role">IFRN · Professora · Designer · Violinista · Pesquisadora</p>
+        <p>Professora do IFRN Campus Natal Centro Histórico no Curso Técnico em Multimídia Integrado. Mestranda em Ergonomia e Interação Humano-Computador, com pesquisa de doutorado focada no desenvolvimento de artefatos para mensurar o engajamento educacional. Experiência de mercado em design gráfico e produção de materiais didáticos.</p>
+        <div class="pesquisadora-tags">
+          <span class="tag">Design Gráfico</span>
+          <span class="tag">Ergonomia &amp; IHC</span>
+          <span class="tag">Multimídia</span>
+          <span class="tag">Materiais Didáticos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rogério -->
+    <div class="pesquisadora-card" data-reveal="fade-up" data-delay="2">
+      <div class="pesquisadora-foto">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="pesquisadora-info">
+        <h3>Prof. Dr. Rogério Emiliano Alcoforado</h3>
+        <p class="pesquisadora-role">UERN · Doutor em Filosofia · Ética Kantiana</p>
+        <p>Doutor em Filosofia pelo Programa Integrado UFRN/UFPB/UFPE. Sua tese — <em>"Da condição moral do homem em Kant a uma tese empírica sobre a origem da moral na humanidade"</em> — investiga a funcionalidade da moral para a espécie humana, articulando a metafísica kantiana com biologia evolutiva e a questão pedagógica do aperfeiçoamento moral. A ponte entre Kant e a condição empírica da moral é o elo que fundamenta eticamente este projeto.</p>
+        <div class="pesquisadora-tags">
+          <span class="tag green">Kant</span>
+          <span class="tag green">Ética e Moral</span>
+          <span class="tag">Metafísica</span>
+          <span class="tag">Pedagogia Moral</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== CTA ========== -->
+<section class="section section-cta" id="contato">
+  <div class="section-inner" style="text-align:center">
+    <div data-reveal="fade-up">
+      <p class="eyebrow" style="justify-content:center">Chamada para Ação</p>
+      <h2>Participe desta Transformação</h2>
+      <p style="margin:1rem auto 0">Este projeto é uma aposta em educação feita por dentro da instituição — prática, colaborativa e com potencial real de mudança. Buscamos parceiros que compartilhem a visão de que a educação pode e deve ser um espaço de criação, não apenas de reprodução.</p>
+    </div>
+
+    <div class="cta-contact" data-reveal="fade-up" data-delay="1">
+      <strong>Prof.ª Ivana Lima</strong>
+      <span>IFRN — Campus Natal Centro Histórico</span>
+      <span style="color:var(--blue)">ivana.lima@ifrn.edu.br</span>
+    </div>
+
+    <div class="cta-logos" data-reveal="fade-up" data-delay="2">
+      <span>IFRN</span>
+      <span>UERN</span>
+      <span>ICe/UFRN</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <span class="footer-l">IFRN · Campus Natal Centro Histórico · 2026</span>
+  <span class="footer-r">Projeto Interinstitucional</span>
+</footer>
+
+<!-- ========== BARRA DE EXPORTAÇÃO ========== -->
+<div id="export-bar" aria-label="Opções de exportação">
+  <button class="export-btn" id="btnPdf" onclick="exportPDF()" title="Exportar como PDF">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+    <span>Exportar PDF</span>
+  </button>
+  <div class="export-sep"></div>
+  <button class="export-btn" id="btnHtml" onclick="exportHTML()" title="Baixar HTML autossuficiente para enviar">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    <span>Baixar HTML</span>
+  </button>
+  <span class="export-hint">para enviar ao parceiro</span>
+</div>
+
+<style>
+/* === Export Bar === */
+#export-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--ink);
+  border-radius: 100px;
+  padding: .5rem .75rem .5rem .9rem;
+  box-shadow: 0 4px 20px rgba(26,24,20,.22);
+}
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.85);
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: .35rem .6rem;
+  border-radius: 100px;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+}
+.export-btn:hover {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+}
+.export-sep {
+  width: 1px;
+  height: 16px;
+  background: rgba(255,255,255,.2);
+}
+.export-hint {
+  font-size: .68rem;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .03em;
+  padding-left: .25rem;
+  padding-right: .35rem;
+}
+#btnPdf.loading span::after { content: '…'; }
+</style>
+
+<script>
+/* ============================================================
+   EXPORTAR PDF — usa a stylesheet de impressão
+============================================================ */
+function exportPDF() {
+  const btn = document.getElementById('btnPdf');
+  btn.classList.add('loading');
+  // Pequeno delay para o browser terminar qualquer animação
+  setTimeout(() => {
+    window.print();
+    btn.classList.remove('loading');
+  }, 120);
+}
+
+/* ============================================================
+   EXPORTAR HTML AUTOSSUFICIENTE
+   Lê todos os CSS, inline-iza no documento e gera um .html
+   limpo para enviar ao parceiro (funciona offline)
+============================================================ */
+async function exportHTML() {
+  const btn = document.getElementById('btnHtml');
+  const originalText = btn.querySelector('span').textContent;
+  btn.querySelector('span').textContent = 'Gerando…';
+  btn.disabled = true;
+
+  try {
+    // 1. Coletar todos os <link rel="stylesheet">
+    const links = [...document.querySelectorAll('link[rel="stylesheet"]')];
+    const cssBlocks = await Promise.all(links.map(async (link) => {
+      try {
+        const res = await fetch(link.href);
+        return await res.text();
+      } catch {
+        return '/* não carregado: ' + link.href + ' */';
+      }
+    }));
+    const allCSS = cssBlocks.join('\n\n');
+
+    // 2. Clonar o documento
+    const clone = document.documentElement.cloneNode(true);
+
+    // 3. Remover scripts, links de CSS externos e barra de exportação
+    clone.querySelectorAll('script, link[rel="stylesheet"], #export-bar').forEach(el => el.remove());
+
+    // 4. Injetar CSS inline
+    const styleEl = clone.ownerDocument
+      ? clone.ownerDocument.createElement('style')
+      : document.createElement('style');
+    styleEl.textContent = allCSS;
+    clone.querySelector('head').appendChild(styleEl);
+
+    // 5. Abrir todos os detalhes dos pilares (estavam fechados por JS)
+    clone.querySelectorAll('.pillar-detail').forEach(d => {
+      d.style.maxHeight = 'none';
+      d.style.opacity = '1';
+      d.style.overflow = 'visible';
+    });
+
+    // 6. Revelar todos os elementos animados
+    clone.querySelectorAll('[data-reveal]').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+
+    // 7. Adicionar cabeçalho de origem
+    const today = new Date().toLocaleDateString('pt-BR', {day:'2-digit', month:'long', year:'numeric'});
+    const originBanner = document.createElement('div');
+    originBanner.innerHTML = `<div style="background:#eef6ee;border-bottom:2px solid #b8d9b8;padding:.75rem 2rem;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;color:#2d6e2d;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem"><span><strong>Proposta enviada por Prof.ª Ivana Lima</strong> — IFRN Campus Natal Centro Histórico</span><span>Documento gerado em ${today}</span></div>`;
+    const navEl = clone.querySelector('.nav');
+    if (navEl) navEl.insertAdjacentElement('afterend', originBanner);
+
+    // 8. Gerar blob e download
+    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'proposta-ifrn-educacao-neurociencia.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+
+  } catch (err) {
+    alert('Erro ao gerar HTML: ' + err.message);
+  } finally {
+    btn.querySelector('span').textContent = originalText;
+    btn.disabled = false;
+  }
+}
+</script>
+
+<!-- ========== SCRIPTS ========== -->
+<script src="js/main.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/pillars-diagram.js"></script>
+<script src="js/comparison-slider.js"></script>
+<script src="js/timeline.js"></script>
+</body>
+</html>

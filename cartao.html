@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ivana Lima — Cartão de Contato</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink2: #3a3733;
+    --ink3: #6e6b67;
+    --paper: #ffffff;
+    --paper2: #faf8f4;
+    --green: #1e5c1e;
+    --green-light: #f0f7f0;
+    --green-border: #8ec98e;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: var(--sans);
+    background: var(--paper2);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+
+  .card {
+    background: var(--paper);
+    border-radius: 20px;
+    box-shadow: 0 4px 32px rgba(0,0,0,.10), 0 1px 4px rgba(0,0,0,.06);
+    width: 100%;
+    max-width: 380px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Header verde com logo */
+  .card-header {
+    background: var(--green);
+    padding: 2rem 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  /* Logo IFRN */
+  .ifrn-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+  }
+
+  .ifrn-logo-mark {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .ifrn-wordmark {
+    color: #fff;
+    font-family: var(--sans);
+    font-size: .75rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: .03em;
+    opacity: .92;
+  }
+
+  /* Foto perfil */
+  .photo-wrap {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,.45);
+    overflow: hidden;
+    background: rgba(255,255,255,.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  /* Placeholder — mostrado quando não há foto */
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.18);
+    border-radius: 50%;
+  }
+
+  .photo-placeholder span {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.85);
+    letter-spacing: -.02em;
+    line-height: 1;
+    margin-top: .1em;
+  }
+
+  /* Nome e cargo */
+  .card-identity {
+    text-align: center;
+    color: #fff;
+  }
+
+  .card-name {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 300;
+    letter-spacing: -.01em;
+    line-height: 1.15;
+    margin-bottom: .35rem;
+  }
+
+  .card-role {
+    font-size: .78rem;
+    opacity: .82;
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  /* Corpo do cartão */
+  .card-body {
+    padding: 1.5rem 1.75rem;
+  }
+
+  /* Lista de contatos */
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    text-decoration: none;
+    color: var(--ink2);
+    font-size: .875rem;
+    line-height: 1.4;
+    transition: color .18s;
+  }
+
+  .contact-item:hover { color: var(--green); }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--green-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--green);
+  }
+
+  .contact-icon.whatsapp-icon {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .contact-meta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-label {
+    font-size: .68rem;
+    color: var(--ink3);
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: .15rem;
+  }
+
+  .contact-value {
+    font-size: .875rem;
+    font-weight: 400;
+    color: var(--ink2);
+    word-break: break-all;
+  }
+
+  /* Divisor */
+  .divider {
+    height: 1px;
+    background: rgba(26,24,20,.08);
+    margin: 1.25rem 0;
+  }
+
+  /* Botão Salvar Contato */
+  .btn-save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    width: 100%;
+    padding: .9rem 1.25rem;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--sans);
+    font-size: .9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .18s, transform .12s;
+    letter-spacing: .01em;
+  }
+
+  .btn-save:hover {
+    background: #155115;
+    transform: translateY(-1px);
+  }
+
+  .btn-save:active { transform: translateY(0); }
+
+  /* Footer */
+  .card-footer {
+    padding: .9rem 1.75rem 1.25rem;
+    text-align: center;
+    font-size: .7rem;
+    color: var(--ink3);
+    border-top: 1px solid rgba(26,24,20,.06);
+    line-height: 1.5;
+  }
+
+  /* Adaptação para telas muito pequenas */
+  @media (max-width: 400px) {
+    body { padding: 1rem; }
+    .card-header { padding: 1.5rem 1.25rem 1.25rem; }
+    .card-body { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Header verde -->
+  <div class="card-header">
+
+    <!-- Logo IFRN -->
+    <div class="ifrn-logo-wrap">
+      <svg class="ifrn-logo-mark" viewBox="0 0 140 180" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#fff">
+          <!-- Círculo vermelho → branco no cartão verde -->
+          <circle cx="21.12" cy="21.12" r="21.12"/>
+          <!-- Grid de quadrados arredondados -->
+          <rect x="47.76" y="1.76"  width="36.84" height="36.84" rx="3.87"/>
+          <rect x="94.22" y="1.76"  width="36.84" height="36.84" rx="3.87"/>
+          <rect x="1.76"  y="47.75" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="47.76" y="47.75" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="94.22" y="94.22" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="1.76"  y="94.22" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="47.76" y="94.22" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="1.76"  y="140.68" width="36.84" height="36.84" rx="3.87"/>
+          <rect x="47.76" y="140.68" width="36.84" height="36.84" rx="3.87"/>
+        </g>
+      </svg>
+      <div class="ifrn-wordmark">
+        IFRN<br>Natal Centro Histórico
+      </div>
+    </div>
+
+    <!-- Foto -->
+    <div class="photo-wrap" id="photo-wrap">
+      <img src="assets/img/ivana-lima.jpg" alt="Ivana Lima">
+    </div>
+
+    <!-- Nome e cargo -->
+    <div class="card-identity">
+      <div class="card-name">Prof.ª Ivana Lima</div>
+      <div class="card-role">
+        Professora de Design Gráfico<br>
+        Mestranda em Ergonomia &amp; IHC
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Corpo -->
+  <div class="card-body">
+
+    <div class="contact-list">
+
+      <!-- E-mail institucional -->
+      <a class="contact-item" href="mailto:ivana.lima@ifrn.edu.br">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+        </div>
+        <div class="contact-meta">
+          <span class="contact-label">E-mail Institucional</span>
+          <span class="contact-value">ivana.lima@ifrn.edu.br</span>
+        </div>
+      </a>
+
+      <!-- E-mail pessoal -->
+      <a class="contact-item" href="mailto:ivanalima@icloud.com">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="contact-meta">
+          <span class="contact-label">E-mail Pessoal</span>
+          <span class="contact-value">ivanalima@icloud.com</span>
+        </div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a class="contact-item" href="https://wa.me/5584994615508?text=Ol%C3%A1%20Prof.%C2%AA%20Ivana!" target="_blank" rel="noopener">
+        <div class="contact-icon whatsapp-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </div>
+        <div class="contact-meta">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">(84) 99461-5508</span>
+        </div>
+      </a>
+
+      <!-- Telefone -->
+      <a class="contact-item" href="tel:+5584994615508">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div class="contact-meta">
+          <span class="contact-label">Telefone</span>
+          <span class="contact-value">(84) 99461-5508</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Botão salvar contato (vCard download) -->
+    <a class="btn-save" href="#" id="btn-vcard" download="Ivana_Lima_IFRN.vcf">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <line x1="19" y1="8" x2="19" y2="14"/>
+        <line x1="22" y1="11" x2="16" y2="11"/>
+      </svg>
+      Salvar Contato
+    </a>
+
+  </div>
+
+  <div class="card-footer">
+    IFRN · Campus Natal Centro Histórico<br>
+    Design Gráfico · Percepção Visual · Mediação Educacional
+  </div>
+
+</div>
+
+<script>
+  // Gera e disponibiliza o arquivo vCard para download
+  const vcard = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'FN:Prof.ª Ivana Lima',
+    'N:Lima;Ivana;;;Prof.ª',
+    'ORG:IFRN Campus Natal Centro Histórico',
+    'TITLE:Professora de Design Gráfico',
+    'TEL;TYPE=CELL,WHATSAPP:+5584994615508',
+    'EMAIL;TYPE=WORK,INTERNET:ivana.lima@ifrn.edu.br',
+    'EMAIL;TYPE=HOME,INTERNET:ivanalima@icloud.com',
+    'NOTE:Mestranda em Ergonomia & IHC · Pesquisa em Percepção Visual e Mediação Educacional',
+    'END:VCARD'
+  ].join('\r\n');
+
+  const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  document.getElementById('btn-vcard').href = url;
+
+  // Se existir foto no assets, substitui o placeholder
+  const img = new Image();
+  img.onload = function() {
+    const wrap = document.getElementById('photo-wrap');
+    wrap.innerHTML = '';
+    wrap.appendChild(img);
+  };
+  img.alt = 'Ivana Lima';
+  img.src = 'assets/img/ivana-lima.jpg';
+</script>
+
+</body>
+</html>

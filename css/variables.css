@@ -1,0 +1,50 @@
+:root {
+  /* === Ink & Paper (base) === */
+  --ink: #1a1814;
+  --ink2: #4a4742;
+  --ink3: #888480;
+  --paper: #faf8f4;
+  --paper2: #f2efea;
+  --paper3: #e8e5e0;
+  --rule: rgba(26, 24, 20, .12);
+
+  /* === Accent: Green (Filosofia) === */
+  --green: #2d6e2d;
+  --green-bg: #eef6ee;
+  --green-border: #b8d9b8;
+
+  /* === Accent: Blue (Design) === */
+  --blue: #185fa5;
+  --blue-bg: #e8f2fd;
+  --blue-border: #b5d4f4;
+
+  /* === Accent: Amber (Neurociência) === */
+  --amber: #a57018;
+  --amber-bg: #fef7ec;
+  --amber-border: #e8d4a8;
+
+  /* === Accent: Red muted (Problema) === */
+  --red: #8b3a3a;
+  --red-bg: #fdf0f0;
+  --red-border: #e0c0c0;
+
+  /* === Typography === */
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+
+  /* === Spacing === */
+  --section-gap: clamp(4rem, 8vw, 8rem);
+  --content-max: 1080px;
+  --narrow-max: 720px;
+  --side-pad: clamp(1.25rem, 4vw, 3rem);
+
+  /* === Radius === */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  /* === Transitions === */
+  --ease-out: cubic-bezier(.25, .46, .45, .94);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --duration: .5s;
+}

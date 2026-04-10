@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aliança Científica — Instituto do Cérebro UFRN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1814;
+  --ink2: #3a3733;
+  --ink3: #6e6b67;
+  --paper: #ffffff;
+  --paper2: #faf8f4;
+  --paper3: #f0ede8;
+  --rule: rgba(26,24,20,.1);
+  --amber: #8c5c00;
+  --amber-bg: #fdf5e6;
+  --amber-border: #e0c87a;
+  --blue: #0f4e8a;
+  --blue-bg: #eef5fc;
+  --blue-border: #9ec4e8;
+  --green: #1e5c1e;
+  --green-bg: #f0f7f0;
+  --green-border: #8ec98e;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.2;
+}
+h1 { font-size: 2.2rem; margin-bottom: 1rem; }
+h2 { font-size: 1.6rem; margin-bottom: .75rem; margin-top: 2rem; }
+h3 { font-size: 1.05rem; font-weight: 400; margin-top: 1.25rem; margin-bottom: .5rem; }
+
+p { color: var(--ink2); margin-bottom: .75rem; }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 3rem;
+}
+
+/* === TOP BANNER === */
+.banner {
+  background: var(--paper2);
+  border-bottom: 2px solid #359846;
+  color: var(--ink);
+  padding: 1.25rem 2rem;
+  margin: -2.5rem -2rem 2.5rem -2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.banner-logo {
+  width: 44px;
+  height: 44px;
+  background: #359846;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.banner-logo svg {
+  width: 30px;
+  height: 30px;
+}
+.banner-left {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  flex: 1;
+}
+.banner-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: .02em;
+}
+.banner-sub {
+  font-size: .78rem;
+  color: var(--ink3);
+  letter-spacing: .02em;
+}
+.banner-badge {
+  background: #359846;
+  color: white;
+  padding: .35rem .85rem;
+  border-radius: 100px;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+
+/* === EYEBROW === */
+.eyebrow {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ink3);
+  margin-bottom: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* === SECTIONS === */
+.section {
+  margin-bottom: 2.5rem;
+}
+.section-intro {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.section-intro p {
+  font-size: .95rem;
+  max-width: none;
+  color: var(--ink);
+}
+
+/* === GRID === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* === CARD === */
+.card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.25rem;
+  border-left: 4px solid var(--blue);
+}
+.card.amber { border-left-color: var(--amber); }
+.card h4 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: .5rem;
+  color: var(--ink);
+}
+.card-role {
+  font-size: .8rem;
+  color: var(--ink3);
+  margin-bottom: .75rem;
+}
+.card p {
+  font-size: .875rem;
+  color: var(--ink2);
+}
+.card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: .5rem;
+}
+.card li {
+  font-size: .875rem;
+  color: var(--ink2);
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: .35rem;
+}
+.card li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 500;
+}
+
+/* === HIGHLIGHT BOX === */
+.highlight {
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  border-left: 4px solid var(--blue);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+.highlight h4 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--blue);
+  margin-bottom: .5rem;
+}
+.highlight p {
+  font-size: .9rem;
+  color: var(--ink2);
+  margin: 0;
+}
+
+/* === CTA === */
+.cta-block {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: 14px;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+.cta-block h3 {
+  color: var(--green);
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+.cta-block p {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--ink2);
+}
+.cta-contact-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
+}
+.cta-contact {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  padding: 1.5rem 1.75rem;
+  background: white;
+  border: 1px solid var(--green-border);
+  border-radius: 10px;
+  font-size: .9rem;
+  text-align: left;
+  min-width: 240px;
+}
+.cta-contact-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: .25rem;
+}
+.cta-contact-role {
+  font-size: .8rem;
+  color: var(--ink3);
+  line-height: 1.4;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: .25rem;
+}
+.cta-contact-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .875rem;
+  color: var(--ink2);
+}
+.cta-contact-item svg {
+  flex-shrink: 0;
+  color: var(--green);
+}
+.cta-contact-item a {
+  color: var(--ink2);
+  text-decoration: none;
+}
+.cta-contact-item a:hover { color: var(--green); }
+.cta-contact-item.whatsapp a { color: #1a7d3b; font-weight: 500; }
+
+/* QR code */
+.qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+}
+.qr-label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink3);
+}
+#qrcode canvas, #qrcode img {
+  border-radius: 6px;
+  border: 4px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+/* === FOOTER === */
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+  margin-top: 3rem;
+  text-align: center;
+  font-size: .8rem;
+  color: var(--ink3);
+}
+
+/* === MOBILE === */
+@media (max-width: 640px) {
+  .container { padding: 1.5rem 1rem 2rem; }
+  .banner { margin: -1.5rem -1rem 1.5rem -1rem; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="banner-logo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- Círculo no topo esquerdo -->
+      <circle cx="20" cy="20" r="15" fill="white"/>
+      <!-- Quadrado topo meio -->
+      <rect x="38" y="8" width="24" height="24" rx="4" fill="white"/>
+      <!-- Quadrado topo direito -->
+      <rect x="68" y="8" width="24" height="24" rx="4" fill="white"/>
+      <!-- Quadrado meio esquerdo -->
+      <rect x="8" y="38" width="24" height="24" rx="4" fill="white"/>
+      <!-- Quadrado meio meio -->
+      <rect x="38" y="38" width="24" height="24" rx="4" fill="white"/>
+      <!-- Quadrado baixo esquerdo -->
+      <rect x="8" y="68" width="24" height="24" rx="4" fill="white"/>
+      <!-- Quadrado baixo meio -->
+      <rect x="38" y="68" width="24" height="24" rx="4" fill="white"/>
+      <!-- Quadrado baixo direito -->
+      <rect x="68" y="68" width="24" height="24" rx="4" fill="white"/>
+    </svg>
+  </div>
+  <div class="banner-left">
+    <div class="banner-title">IFRN — Natal Centro Histórico</div>
+    <div class="banner-sub">Uma oportunidade de pesquisa aplicada à educação</div>
+  </div>
+  <div class="banner-badge">Viabilidade Comprovada</div>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <h1>Aliança Científica em Neurociência Cognitiva &amp; Design de Mediação Educacional</h1>
+  <p style="font-size: 1rem; color: var(--ink2); max-width: 700px; margin-bottom: 2rem;">
+    Uma proposta de colaboração estratégica entre o Instituto do Cérebro (UFRN), o IFRN Campus Natal Centro Histórico e a UERN para validar cientificamente uma metodologia de educação técnica fundamentada em percepção visual, Gestalt, cognição, ética kantiana e design crítico.
+  </p>
+
+  <!-- SEÇÃO 0: QUEM PROPÕE -->
+  <div class="section" style="background: var(--blue-bg); border: 1px solid var(--blue-border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2.5rem;">
+    <div class="eyebrow">Fundamentação Científica</div>
+    <h3 style="color: var(--blue); margin-top: 0;">Prof.ª Ivana Lima — Design Gráfico, Percepção Visual &amp; Neurociência Aplicada</h3>
+
+    <p style="margin-top: 1rem;"><strong>Formação e foco de pesquisa:</strong></p>
+    <ul style="list-style: none; padding-left: 0; margin-top: .75rem;">
+      <li style="padding: .5rem 0; border-bottom: 1px solid var(--blue-border);"><strong>Design Gráfico &amp; Percepção Visual</strong> — Pesquisa em Gestalt, cognição visual, leitura de imagem e comunicação visual estratégica</li>
+      <li style="padding: .5rem 0; border-bottom: 1px solid var(--blue-border);"><strong>Estratégias de Persuasão &amp; Comunicação</strong> — Como o design influencia a atenção, compreensão e engajamento; mecanismos neurais da persuasão visual</li>
+      <li style="padding: .5rem 0; border-bottom: 1px solid var(--blue-border);"><strong>Pensamento Crítico &amp; Mediação Educacional</strong> — Desenvolvimento de materiais didáticos que estimulam questionamento, análise visual e posicionamento ético</li>
+      <li style="padding: .5rem 0;"><strong>Produtos Digitais &amp; Analógicos para Educação</strong> — Prototipagem, fabricação digital (impressão 3D, design interativo) e materialização de conceitos através do design</li>
+    </ul>
+
+    <p style="margin-top: 1rem; font-size: .9rem; color: var(--ink2);"><strong>Por que isso importa para essa aliança:</strong> Design não é decoração. Design é um modo de pensar que conecta cognição, emoção e ação. Quando você entende como o cérebro <em>percebe</em>, <em>processa</em> e <em>decide</em>, você pode desenhar experiências pedagógicas que ativam aprendizagem real — não apenas retenção de informação.</p>
+  </div>
+
+  <!-- SEÇÃO 1: SUAS LINHAS DE PESQUISA -->
+  <div class="section">
+    <div class="eyebrow">Seu Potencial Científico</div>
+    <h2>Áreas do Instituto do Cérebro que Convergem com Essa Pesquisa</h2>
+
+    <div class="section-intro">
+      <p>O Instituto do Cérebro não estuda "educação" — estuda <strong>memória, atenção, percepção, linguagem e emoção</strong>. Exatamente os mecanismos que precisam ser compreendidos para transformar uma sala de aula em um espaço de aprendizagem de verdade.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- Memória e Aprendizagem -->
+      <div class="card">
+        <h4>Memória &amp; Aprendizagem</h4>
+        <div class="card-role">Sidarta Ribeiro, Martín Cammarota</div>
+        <p>Consolidação de memória durante a aprendizagem — como o cérebro "fixa" conhecimento novo.</p>
+        <ul>
+          <li>Impacto direto na retenção de conceitos técnicos</li>
+          <li>Design pedagógico pode potencializar consolidação</li>
+          <li>Métrica: dados neurais em tempo real (EEG portátil)</li>
+        </ul>
+      </div>
+
+      <!-- Atenção e Ritmos -->
+      <div class="card">
+        <h4>Atenção &amp; Ritmos Cerebrais</h4>
+        <div class="card-role">Adriano Tort</div>
+        <p>Ritmos cerebrais (ondas theta, gamma) que sustentam atenção e processamento cognitivo.</p>
+        <ul>
+          <li>Por que alunos "desligam" em aulas tradicionais?</li>
+          <li>Como design ativa oscilações neurais de engajamento</li>
+          <li>Métrica: monitoramento de coerência neural durante aprendizado</li>
+        </ul>
+      </div>
+
+      <!-- Percepção Visual -->
+      <div class="card">
+        <h4>Percepção Visual &amp; Design</h4>
+        <div class="card-role">Sérgio Neuenschwander, Kerstin Schmidt</div>
+        <p>Processamento visual, Gestalt, contraste — como o cérebro interpreta imagens e comunicação.</p>
+        <ul>
+          <li>Design gráfico não é decoração — é neurociência aplicada</li>
+          <li>Princípios de Gestalt otimizam carga cognitiva</li>
+          <li>Métrica: eye-tracking + fMRI em interfaces pedagógicas</li>
+        </ul>
+      </div>
+
+      <!-- Linguagem e Interação -->
+      <div class="card">
+        <h4>Linguagem &amp; Interação Social</h4>
+        <div class="card-role">Daniel Takahashi</div>
+        <p>Comunicação, processamento de linguagem, dinâmicas sociais no aprendizado.</p>
+        <ul>
+          <li>Alunos aprendem melhor juntos — mas por quê?</li>
+          <li>Neurociência da mediação educacional</li>
+          <li>Métrica: análise de padrões de interação durante aprendizado colaborativo</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: O NEXO -->
+  <div class="section">
+    <div class="eyebrow">O Encontro</div>
+    <h2>Por Que Essa Aliança Faz Sentido</h2>
+
+    <p>Aqui está o encontro crítico: Prof.ª Ivana traz <strong>design fundamentado em neurociência</strong> — não é intuição, é pesquisa em percepção visual, Gestalt e cognição. Você (ICe/UFRN) traz <strong>rigor científico</strong> — a capacidade de medir se esse design realmente funciona no cérebro do aluno.</p>
+
+    <div class="highlight">
+      <h4>A Pergunta que Nenhum Deles Consegue Responder Sozinho</h4>
+      <p><strong>"Quando você desenha uma interface pedagógica com princípios de Gestalt, reduz a carga cognitiva e ativa o pensamento crítico — o que está acontecendo *neurologicamente* durante esse processo?"</strong></p>
+      <p style="margin-top: .75rem; font-style: italic; color: var(--ink3);">Não por avaliação de usabilidade ou feedback anedótico — por dados neurais mensuráveis (EEG, sincronização neural, padrões de atenção).</p>
+    </div>
+
+    <h3>O que você oferece:</h3>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+      <li style="padding: .5rem 0; border-bottom: 1px solid var(--rule);"><strong>Instrumentos de medição</strong> — EEG portátil, eye-tracking, análise de sincronização neural</li>
+      <li style="padding: .5rem 0; border-bottom: 1px solid var(--rule);"><strong>Rigor metodológico</strong> — design experimental que aguenta revisão científica</li>
+      <li style="padding: .5rem 0; border-bottom: 1px solid var(--rule);"><strong>Base para publicação</strong> — artigos em periódicos de educação e neurociência</li>
+      <li style="padding: .5rem 0;"><strong>Impacto acadêmico</strong> — demonstra como neurociência molda pedagogia</li>
+    </ul>
+  </div>
+
+  <!-- SEÇÃO 3: O PROJETO -->
+  <div class="section">
+    <div class="eyebrow">A Estrutura</div>
+    <h2>Como a Aliança Funcionaria</h2>
+
+    <div class="grid" style="grid-template-columns: 1fr 1fr; margin-top: 1.5rem;">
+
+      <div class="card amber">
+        <h4>🧠 Papel do ICe/UFRN</h4>
+        <ul>
+          <li>Desenhar protocolo neurocientifico (EEG portátil, fMRI pontual)</li>
+          <li>Treinar equipe IFRN em coleta de dados</li>
+          <li>Analisar dados coletados em contexto pedagógico</li>
+          <li>Co-autoria em publicações científicas</li>
+          <li>Coordenação de pesquisador como co-PI em editais</li>
+        </ul>
+      </div>
+
+      <div class="card amber">
+        <h4>🏫 Papel do IFRN CH — Prof.ª Ivana Lima</h4>
+        <ul>
+          <li>Desenho de artefatos educacionais (digitais + analógicos) com fundamentação em percepção visual e Gestalt</li>
+          <li>Aplicação de estratégias de comunicação visual para otimizar atenção e processamento cognitivo</li>
+          <li>Integração do pensamento crítico nas atividades (aluno não é consumidor passivo de design, mas analisador ativo)</li>
+          <li>Execução da metodologia pedagógica com foco em mediação educacional através do design</li>
+          <li>Coleta de observações qualitativas sobre engajamento visual e comportamento cognitivo durante aula</li>
+          <li>Coordenação com ICe/UFRN na instrumentação e validação científica</li>
+          <li>Documentação: portfolio de produtos criados + análise de processo pedagógico</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <h3 style="margin-top: 2rem;">O Que Significa "Design de Mediação Educacional" Nesse Contexto</h3>
+    <div style="background: var(--paper2); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem;">
+      <p><strong>Não é:</strong> Decorar slides, criar infográficos bonitos, ou "gamificar" conteúdo sem propósito.</p>
+      <p style="margin-top: .75rem;"><strong>É:</strong> Projetar artefatos (digitais e analógicos) que:</p>
+      <ul style="list-style: none; padding-left: 0; margin-top: .75rem;">
+        <li style="padding: .3rem 0;"><strong>→ Reduzem carga cognitiva</strong> através de hierarquia visual, contraste, Gestalt — o aluno não trabalha "contra" a interface, mas *com* ela</li>
+        <li style="padding: .3rem 0;"><strong>→ Ativam pensamento crítico</strong> — o design *questiona*, não apenas *informa*. O aluno é convidado a analisar, comparar, tomar posição</li>
+        <li style="padding: .3rem 0;"><strong>→ Incorporam persuasão ética</strong> — entender *como* a comunicação visual funciona para influenciar, e usar esse conhecimento de forma honesta (não manipuladora)</li>
+        <li style="padding: .3rem 0;"><strong>→ Materializam conceitos</strong> — ideias abstratas se tornam objetos, protótipos, experiências concretas que o aluno pode tocar, manipular, transformar</li>
+      </ul>
+      <p style="margin-top: 1rem; font-size: .9rem; color: var(--ink3);"><em>Exemplo:</em> Em vez de um slide sobre "impressão 3D", o aluno aprende geometria, design e fabricação digital *criando um objeto 3D*. Aprende ética kantiana *discutindo as implicações éticas de seu design*. O artefato é a pedagogia.</p>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Fases de Execução</h3>
+    <div style="margin-top: 1rem; border-left: 3px solid var(--blue); padding-left: 1.5rem; color: var(--ink2);">
+      <p><strong>Fase 1 (Abr–Jun 2026):</strong> Piloto mínimo — 1 turma, 1 disciplina, 8-10 semanas de coleta de dados</p>
+      <p style="margin-top: .75rem;"><strong>Fase 2 (Jul–Set 2026):</strong> Análise de dados + escrita de artigo colaborativo</p>
+      <p style="margin-top: .75rem;"><strong>Fase 3 (Out 2026+):</strong> Publicação + escala para turmas adicionais + submissão de edital para continuação</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4: VIABILIDADE FINANCEIRA -->
+  <div class="section">
+    <div class="eyebrow">Recursos</div>
+    <h2>Por Que Isso é Viável Financeiramente</h2>
+
+    <div class="grid" style="margin-top: 1.5rem;">
+
+      <div class="card">
+        <h4>EEG Portátil — Custo Controlado</h4>
+        <p>Equipamento já existente no mercado (Emotiv, Muse, OpenBCI) — não precisa comprar aparato hospitalar de R$ 200k+. Custo de 1-2 headsets portáteis: R$ 3-8k.</p>
+      </div>
+
+      <div class="card">
+        <h4>Equipe Já Existe</h4>
+        <p>Você já tem pesquisadores no ICe, professora no IFRN, filósofo na UERN. Custo inicial é <strong>integração</strong>, não criação de equipe.</p>
+      </div>
+
+      <div class="card">
+        <h4>Financiamento Disponível</h4>
+        <p>CNPq Universal, CAPES PRINT, Huawei Seeds for the Future — editais que cobrem pesquisas interinstitucionais com neurociência aplicada à educação.</p>
+      </div>
+
+      <div class="card">
+        <h4>Modelo Escalonável</h4>
+        <p>Começa como piloto (baixo custo), gera dados científicos, abre porta para financiamento maior para replicação.</p>
+      </div>
+
+    </div>
+
+    <div class="highlight" style="margin-top: 2rem;">
+      <h4>Investimento Estimado — Fase 1 (Piloto)</h4>
+      <p><strong>R$ 25-35 mil:</strong> EEG portátil, software de análise, viagens (reuniões ICe-IFRN), bolsa parcial para estudante analisando dados</p>
+      <p style="margin-top: .75rem; font-size: .85rem; color: var(--ink3);"><em>Coberto por: CNPq Universal, Edital SETEC/MEC IF-Maker, ou recursos internos IFRN + UFRN</em></p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: POR QUE AGORA? -->
+  <div class="section">
+    <div class="eyebrow">Contexto</div>
+    <h2>Por Que Esse É o Momento Certo</h2>
+
+    <p style="font-size: 1rem; margin-bottom: 1.5rem;">O Brasil está entrando em um momento de oportunidade única:</p>
+
+    <div style="background: var(--paper2); border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0;">
+      <p><strong>1. Educação técnica em transição</strong> — IFRN está repensndo currículo, aberto a inovação pedagógica</p>
+      <p style="margin-top: 1rem;"><strong>2. Financiamento em neurociência crescendo</strong> — CNPq + CAPES criaram linhas específicas para neurociência + aplicações (educação, saúde)</p>
+      <p style="margin-top: 1rem;"><strong>3. Ferramentas acessíveis</strong> — EEG portátil ficou barato e confiável; IA generativa reduz fricção técnica</p>
+      <p style="margin-top: 1rem;"><strong>4. Demanda internacional</strong> — ECNU (China), NYU Shanghai estudam exatamente isso; potencial para colaboração global</p>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Vamos Conversar?</h3>
+    <p>Uma conversa inicial para explorar se essa aliança ressoa com as prioridades do Instituto do Cérebro — especificamente, o interesse em validar cientificamente uma metodologia de design educacional fundamentada em neurociência cognitiva, percepção visual e pensamento crítico.</p>
+    <p style="margin-top: .75rem; font-size: .875rem; color: var(--ink3);">Sem compromisso. Apenas alinhamento sobre potencial científico e interesse mútuo em publicação de resultados.</p>
+
+    <div class="cta-contact-wrap">
+
+      <!-- Dados de contato -->
+      <div class="cta-contact">
+        <div class="cta-contact-name">Prof.ª Ivana Lima</div>
+        <div class="cta-contact-role">
+          Professora de Design Gráfico · IFRN Natal Centro Histórico<br>
+          Mestranda em Ergonomia &amp; IHC · Pesquisa em Percepção Visual e Mediação Educacional
+        </div>
+
+        <!-- E-mail institucional -->
+        <div class="cta-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:ivana.lima@ifrn.edu.br">ivana.lima@ifrn.edu.br</a>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="cta-contact-item whatsapp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <a href="https://wa.me/5584994615508" target="_blank">WhatsApp — (84) 99461-5508</a>
+        </div>
+
+        <!-- IFRN -->
+        <div class="cta-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>IFRN Campus Natal Centro Histórico</span>
+        </div>
+      </div>
+
+      <!-- QR Code -->
+      <div class="qr-wrap">
+        <div class="qr-label">Escanear para contato</div>
+        <div id="qrcode"></div>
+        <div style="font-size:.7rem;color:var(--ink3);text-align:center;max-width:120px;line-height:1.4;">Cartão digital com contatos completos</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    Documento de alinhamento estratégico · IFRN Campus Natal Centro Histórico · Abril 2026<br>
+    Prof.ª Ivana Lima — Design Gráfico, Percepção Visual &amp; Mediação Educacional
+  </div>
+
+</div>
+
+<!-- QR Code: qrcode.js via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  // vCard — ao escanear, o celular oferece "Salvar Contato" nativamente (funciona offline)
+  const vcardData = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'FN:Prof. Ivana Lima',
+    'N:Lima;Ivana;;;Prof.',
+    'ORG:IFRN Campus Natal Centro Historico',
+    'TITLE:Professora de Design Grafico',
+    'TEL;TYPE=CELL:+5584994615508',
+    'EMAIL;TYPE=WORK:ivana.lima@ifrn.edu.br',
+    'EMAIL;TYPE=HOME:ivanalima@icloud.com',
+    'END:VCARD'
+  ].join('\n');
+
+  new QRCode(document.getElementById('qrcode'), {
+    text: vcardData,
+    width: 120,
+    height: 120,
+    colorDark: '#1e5c1e',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
+
+</body>
+</html>

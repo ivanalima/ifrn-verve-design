@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Levantamento de Viabilidade — Projeto IFRN Educação &amp; Neurociência</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===========================
+   DESIGN TOKENS
+=========================== */
+:root {
+  --ink: #1a1814;
+  --ink2: #4a4742;
+  --ink3: #888480;
+  --paper: #faf8f4;
+  --paper2: #f2efea;
+  --paper3: #e8e5e0;
+  --rule: rgba(26,24,20,.12);
+
+  --green: #2d6e2d;
+  --green-bg: #eef6ee;
+  --green-border: #b8d9b8;
+
+  --blue: #185fa5;
+  --blue-bg: #e8f2fd;
+  --blue-border: #b5d4f4;
+
+  --amber: #a57018;
+  --amber-bg: #fef7ec;
+  --amber-border: #e8d4a8;
+
+  --red: #8b3a3a;
+  --red-bg: #fdf0f0;
+  --red-border: #e0c0c0;
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --side-pad: clamp(1.25rem, 4vw, 2.5rem);
+  --content-max: 1100px;
+}
+
+/* ===========================
+   BASE
+=========================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.2;
+}
+h1 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+h2 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); margin-bottom: .75rem; }
+h3 { font-size: 1.05rem; font-weight: 400; }
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+p { color: var(--ink2); margin-bottom: .6rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ===========================
+   LAYOUT
+=========================== */
+.top-bar {
+  background: var(--ink);
+  color: var(--paper);
+  padding: .6rem var(--side-pad);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: .8rem;
+  letter-spacing: .04em;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-bar a {
+  color: rgba(255,255,255,.65);
+  font-size: .8rem;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+.top-bar a:hover { color: #fff; text-decoration: none; }
+.top-bar-title {
+  color: #fff;
+  font-family: var(--serif);
+  font-size: .95rem;
+  font-weight: 400;
+  flex: 1;
+}
+.top-bar-badge {
+  background: rgba(255,255,255,.12);
+  padding: .2rem .6rem;
+  border-radius: 100px;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  color: rgba(255,255,255,.8);
+}
+
+.page-wrap {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 2rem var(--side-pad) 4rem;
+}
+
+.page-header {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.page-header .eyebrow {
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: .4rem;
+}
+.page-header p { font-size: .95rem; max-width: 640px; }
+
+/* ===========================
+   GRID
+=========================== */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* ===========================
+   CARDS
+=========================== */
+.card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+.card-title {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--ink3);
+  margin-bottom: .6rem;
+}
+
+/* ===========================
+   STATUS BADGE
+=========================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .2rem .65rem;
+  border-radius: 100px;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .03em;
+}
+.badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.badge-green { background: var(--green-bg); color: var(--green); }
+.badge-amber { background: var(--amber-bg); color: var(--amber); }
+.badge-red { background: var(--red-bg); color: var(--red); }
+.badge-blue { background: var(--blue-bg); color: var(--blue); }
+.badge-gray { background: var(--paper3); color: var(--ink3); }
+
+/* ===========================
+   SECTION TITLE
+=========================== */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 2.5rem 0 1rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.section-label span {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ink3);
+  white-space: nowrap;
+}
+
+/* ===========================
+   DASHBOARD KPIs
+=========================== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: .75rem;
+}
+.kpi-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.kpi-card.green::before { background: var(--green); }
+.kpi-card.blue::before { background: var(--blue); }
+.kpi-card.amber::before { background: var(--amber); }
+.kpi-card.red::before { background: var(--red); }
+
+.kpi-value {
+  font-family: var(--serif);
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: .3rem;
+}
+.kpi-label { font-size: .75rem; color: var(--ink3); }
+.kpi-sub { font-size: .7rem; color: var(--ink3); margin-top: .3rem; }
+
+/* ===========================
+   SCENARIO TABS
+=========================== */
+.scenario-tabs {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 0;
+}
+.scenario-tab {
+  padding: .6rem 1.25rem;
+  font-size: .85rem;
+  font-weight: 500;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--ink3);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color .2s, border-color .2s;
+  font-family: var(--sans);
+}
+.scenario-tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+.scenario-tab:hover:not(.active) { color: var(--ink2); }
+
+.scenario-panel { display: none; }
+.scenario-panel.active { display: block; }
+
+.scenario-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.scenario-block {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+.scenario-block h4 {
+  font-family: var(--sans);
+  font-size: .8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--ink3);
+  margin-bottom: .75rem;
+}
+.scenario-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.scenario-list li {
+  display: flex;
+  gap: .6rem;
+  font-size: .875rem;
+  color: var(--ink2);
+  align-items: flex-start;
+}
+.scenario-list li::before {
+  content: '—';
+  color: var(--ink3);
+  flex-shrink: 0;
+  margin-top: .05em;
+}
+.scenario-list li.ok::before { content: '✓'; color: var(--green); }
+.scenario-list li.warn::before { content: '⚠'; color: var(--amber); }
+.scenario-list li.block::before { content: '✗'; color: var(--red); }
+
+/* ===========================
+   CHECKLIST POR DIMENSÃO
+=========================== */
+.dimension-accordion { display: flex; flex-direction: column; gap: .75rem; }
+
+.dim-item {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.dim-header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .9rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+.dim-header:hover { background: var(--paper2); }
+
+.dim-icon {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.dim-title { font-weight: 500; font-size: .9rem; flex: 1; }
+.dim-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.dim-bar {
+  width: 80px;
+  height: 4px;
+  background: var(--paper3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.dim-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--green);
+  transition: width .4s;
+}
+.dim-pct {
+  font-size: .72rem;
+  color: var(--ink3);
+  width: 2.5em;
+  text-align: right;
+}
+.dim-chevron {
+  color: var(--ink3);
+  transition: transform .25s;
+  flex-shrink: 0;
+}
+.dim-item.open .dim-chevron { transform: rotate(90deg); }
+
+.dim-body {
+  display: none;
+  padding: 0 1.25rem 1rem;
+  border-top: 1px solid var(--rule);
+}
+.dim-item.open .dim-body { display: block; }
+
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  margin-top: .75rem;
+}
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  font-size: .875rem;
+}
+.checklist li label {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  cursor: pointer;
+  width: 100%;
+  color: var(--ink2);
+}
+.checklist li input[type="checkbox"] {
+  margin-top: .15em;
+  accent-color: var(--green);
+  width: 15px; height: 15px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.checklist li.checked label { color: var(--ink3); text-decoration: line-through; }
+
+.dim-note {
+  margin-top: .75rem;
+}
+.dim-note textarea {
+  width: 100%;
+  min-height: 60px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: .6rem .8rem;
+  font-family: var(--sans);
+  font-size: .82rem;
+  color: var(--ink);
+  background: var(--paper);
+  resize: vertical;
+  outline: none;
+}
+.dim-note textarea:focus { border-color: var(--blue-border); background: white; }
+.dim-note label { font-size: .72rem; color: var(--ink3); display: block; margin-bottom: .35rem; }
+
+/* ===========================
+   FALHAS (MODO ITERATIVO)
+=========================== */
+.failure-matrix { display: flex; flex-direction: column; gap: .75rem; }
+
+.failure-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+}
+.failure-card.mitigado { border-left-color: var(--green); }
+.failure-card.em-andamento { border-left-color: var(--amber); }
+
+.failure-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .5rem;
+}
+.failure-title { font-weight: 500; font-size: .9rem; }
+.failure-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+  margin-top: .75rem;
+}
+@media (max-width: 600px) { .failure-body { grid-template-columns: 1fr; } }
+
+.failure-block h5 {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink3);
+  margin-bottom: .3rem;
+}
+.failure-block p { font-size: .82rem; }
+
+.failure-status {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .75rem;
+}
+.failure-status label { font-size: .78rem; color: var(--ink3); }
+.failure-status select {
+  font-family: var(--sans);
+  font-size: .78rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: .25rem .5rem;
+  background: var(--paper);
+  color: var(--ink);
+  outline: none;
+  cursor: pointer;
+}
+
+/* ===========================
+   RASTREAMENTO DE CONTATOS
+=========================== */
+.contact-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--rule);
+}
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: .85rem;
+}
+.contact-table th {
+  text-align: left;
+  padding: .7rem 1rem;
+  background: var(--paper2);
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink3);
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule);
+}
+.contact-table td {
+  padding: .75rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink2);
+}
+.contact-table tr:last-child td { border-bottom: none; }
+.contact-table tr:hover td { background: var(--paper); }
+.contact-name { font-weight: 500; color: var(--ink); }
+.contact-role { font-size: .75rem; color: var(--ink3); }
+
+.status-select {
+  font-family: var(--sans);
+  font-size: .78rem;
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  padding: .2rem .6rem;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.status-select.pendente { background: var(--paper3); color: var(--ink3); border-color: var(--paper3); }
+.status-select.agendado { background: var(--blue-bg); color: var(--blue); border-color: var(--blue-border); }
+.status-select.realizado { background: var(--green-bg); color: var(--green); border-color: var(--green-border); }
+.status-select.bloqueado { background: var(--red-bg); color: var(--red); border-color: var(--red-border); }
+
+.contact-note-input {
+  width: 100%;
+  min-width: 140px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: .25rem .5rem;
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--ink2);
+  background: transparent;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+}
+.contact-note-input:focus {
+  border-color: var(--rule);
+  background: white;
+}
+
+/* ===========================
+   TIMELINE DE ETAPAS
+=========================== */
+.timeline { position: relative; padding-left: 1.5rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: .5rem; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--rule);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.15rem;
+  top: .35rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--ink3);
+  background: var(--paper);
+}
+.timeline-item.done::before {
+  background: var(--green);
+  border-color: var(--green);
+}
+.timeline-item.active::before {
+  background: var(--amber);
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px var(--amber-bg);
+}
+.timeline-phase {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--ink3);
+  margin-bottom: .2rem;
+}
+.timeline-title { font-weight: 500; font-size: .9rem; }
+.timeline-desc { font-size: .82rem; color: var(--ink3); margin-top: .2rem; }
+.timeline-deps {
+  margin-top: .4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+}
+.dep-tag {
+  font-size: .68rem;
+  padding: .15rem .5rem;
+  background: var(--paper3);
+  border-radius: 100px;
+  color: var(--ink3);
+}
+.dep-tag.critical { background: var(--red-bg); color: var(--red); }
+
+.timeline-status-wrap {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: .5rem;
+}
+.timeline-status-select {
+  font-family: var(--sans);
+  font-size: .75rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: .2rem .5rem;
+  background: var(--paper);
+  color: var(--ink2);
+  outline: none;
+  cursor: pointer;
+}
+
+/* ===========================
+   VERVE DESIGN LAB — INFO
+=========================== */
+.lab-card {
+  background: var(--ink);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 600px) { .lab-card { grid-template-columns: 1fr; } }
+.lab-card h3 {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: .5rem;
+}
+.lab-card p { color: rgba(255,255,255,.7); font-size: .875rem; }
+.lab-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+.lab-tag {
+  font-size: .7rem;
+  padding: .2rem .6rem;
+  border-radius: 100px;
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.8);
+}
+.lab-status-block { text-align: right; }
+.lab-status-block .badge { font-size: .7rem; }
+.lab-status-label {
+  font-size: .68rem;
+  color: rgba(255,255,255,.5);
+  margin-top: .3rem;
+  display: block;
+}
+
+/* ===========================
+   EXPORT / SAVE
+=========================== */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem 1.25rem;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  font-size: .82rem;
+  color: var(--ink2);
+}
+.toolbar-btn {
+  padding: .4rem .9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--rule);
+  background: var(--paper2);
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--ink2);
+  transition: background .15s;
+}
+.toolbar-btn:hover { background: var(--paper3); }
+.toolbar-btn.primary {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+.toolbar-btn.primary:hover { background: var(--ink2); }
+.toolbar-sep { width: 1px; height: 20px; background: var(--rule); }
+.toolbar-saved { font-size: .75rem; color: var(--green); display: none; }
+.toolbar-saved.show { display: inline; }
+
+/* ===========================
+   PRINT / MISC
+=========================== */
+.divider { height: 1px; background: var(--rule); margin: 2rem 0; }
+
+@media (max-width: 700px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media print {
+  .top-bar, .toolbar { display: none; }
+  .dim-body { display: block !important; }
+  .scenario-panel { display: block !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="index.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Projeto
+  </a>
+  <span class="top-bar-title">Levantamento de Viabilidade</span>
+  <span class="top-bar-badge">Uso Interno · IFRN</span>
+</div>
+
+<div class="page-wrap">
+
+  <!-- CABEÇALHO -->
+  <div class="page-header">
+    <p class="eyebrow">Ferramenta de Trabalho — Projeto Interinstitucional 2026</p>
+    <h1>Viabilidade de Execução</h1>
+    <p>Levantamento sistemático de dimensões, cenários de financiamento, mapeamento de falhas e rastreamento de contatos institucionais. Dados salvos localmente no navegador.</p>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <span>Salvar progresso:</span>
+    <button class="toolbar-btn primary" onclick="saveAll()">Salvar agora</button>
+    <button class="toolbar-btn" onclick="exportReport()">Exportar resumo</button>
+    <div class="toolbar-sep"></div>
+    <span class="toolbar-saved" id="savedMsg">Salvo com sucesso</span>
+    <span style="flex:1"></span>
+    <span style="font-size:.75rem;color:var(--ink3)">Última atualização: <span id="lastSaved">—</span></span>
+  </div>
+
+  <!-- DASHBOARD KPIs -->
+  <div class="section-label"><span>Painel de Status</span></div>
+
+  <div class="kpi-grid" id="kpiGrid">
+    <div class="kpi-card green">
+      <div class="kpi-label">Cenário Principal</div>
+      <div class="kpi-value" id="kpi-cenario">A</div>
+      <div class="kpi-sub">Com financiamento governamental</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Contatos Realizados</div>
+      <div class="kpi-value" id="kpi-contatos">0/6</div>
+      <div class="kpi-sub">Interlocutores institucionais</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Viabilidade Geral</div>
+      <div class="kpi-value" id="kpi-viab">0%</div>
+      <div class="kpi-sub">Checklists concluídos</div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-label">Riscos Críticos</div>
+      <div class="kpi-value" id="kpi-riscos">4</div>
+      <div class="kpi-sub">Não mitigados ainda</div>
+    </div>
+  </div>
+
+  <!-- VERVE DESIGN LAB -->
+  <div class="section-label"><span>Centro de Produção</span></div>
+
+  <div class="lab-card">
+    <div>
+      <h3>Laboratório Verve Design — IFRN Centro Histórico</h3>
+      <p>Espaço de produção de materiais de mediação educacional e sala de aula simultânea. O laboratório será tanto o local de criação (artefatos digitais e físicos) quanto o espaço pedagógico onde os alunos aprendem sendo produtores ativos.</p>
+      <div class="lab-tags">
+        <span class="lab-tag">Fabricação Digital</span>
+        <span class="lab-tag">Impressão 3D (PLA/Resina)</span>
+        <span class="lab-tag">Multimídia</span>
+        <span class="lab-tag">IA Generativa</span>
+        <span class="lab-tag">Materiais Didáticos</span>
+        <span class="lab-tag">Sala de Aula Ativa</span>
+      </div>
+    </div>
+    <div class="lab-status-block">
+      <span class="badge badge-amber">Em estruturação</span>
+      <span class="lab-status-label">IFRN · Nat. CH</span>
+    </div>
+  </div>
+
+  <!-- CENÁRIOS -->
+  <div class="section-label"><span>Cenários de Execução</span></div>
+
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" onclick="switchTab('A', this)">Cenário A — Com Financiamento</button>
+    <button class="scenario-tab" onclick="switchTab('B', this)">Cenário B — Centro Independente</button>
+    <button class="scenario-tab" onclick="switchTab('C', this)">Cenário C — Fase Piloto Mínima</button>
+  </div>
+
+  <div class="scenario-panel active" id="panel-A">
+    <p style="font-size:.85rem;color:var(--ink3);margin-bottom:.5rem">Recurso governamental (MCTI, CAPES, CNPq ou FNDE) viabiliza a estruturação completa. Maior alcance, formalização interinstitucional plena.</p>
+    <div class="scenario-content">
+      <div class="scenario-block">
+        <h4>Dependências</h4>
+        <ul class="scenario-list">
+          <li class="warn">Aprovação de edital MCTI / CAPES / CNPq</li>
+          <li class="warn">Formalização de convênio IFRN–UERN–UFRN</li>
+          <li class="ok">IFRN Centro Histórico como sede operacional</li>
+          <li class="ok">Laboratório Verve Design ativo</li>
+          <li class="warn">Pesquisadores ICe/UFRN vinculados formalmente</li>
+          <li class="warn">Prof. Dr. Rogério Alcoforado (UERN) como parceiro</li>
+        </ul>
+      </div>
+      <div class="scenario-block">
+        <h4>Capacidades Habilitadas</h4>
+        <ul class="scenario-list">
+          <li class="ok">Infraestrutura completa de fabricação digital</li>
+          <li class="ok">Pesquisadores do ICe com dedicação ao projeto</li>
+          <li class="ok">Bolsas para alunos-produtores</li>
+          <li class="ok">Publicação científica dos resultados</li>
+          <li class="ok">Escala para outros campi do IFRN</li>
+        </ul>
+      </div>
+      <div class="scenario-block">
+        <h4>Riscos do Cenário</h4>
+        <ul class="scenario-list">
+          <li class="block">Prazo de aprovação de edital (6–18 meses)</li>
+          <li class="warn">Burocracia institucional no convênio</li>
+          <li class="warn">Descontinuidade por mudança de gestão</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-panel" id="panel-B">
+    <p style="font-size:.85rem;color:var(--ink3);margin-bottom:.5rem">Sem aguardar recurso governamental: o IFRN CH cria um Centro de Produção de Mediação Educacional autossustentável — produzindo e vendendo materiais didáticos, consultorias e formações.</p>
+    <div class="scenario-content">
+      <div class="scenario-block">
+        <h4>Modelo de Sustentabilidade</h4>
+        <ul class="scenario-list">
+          <li>Venda de materiais didáticos produzidos no Verve Design</li>
+          <li>Formação docente remunerada (cursos e workshops)</li>
+          <li>Consultoria em design pedagógico para redes municipais</li>
+          <li>Projetos de extensão com retorno institucional</li>
+          <li class="warn">Parcerias com editoras / plataformas EdTech</li>
+        </ul>
+      </div>
+      <div class="scenario-block">
+        <h4>Dependências Reduzidas</h4>
+        <ul class="scenario-list">
+          <li class="ok">Não depende de edital externo</li>
+          <li class="ok">Começa com estrutura existente do IFRN CH</li>
+          <li class="ok">Operação a partir do Verve Design Lab</li>
+          <li class="warn">Necessita aval institucional interno IFRN</li>
+          <li class="warn">Parcerias ICe/UERN em modo colaborativo informal</li>
+        </ul>
+      </div>
+      <div class="scenario-block">
+        <h4>Ações Imediatas</h4>
+        <ul class="scenario-list">
+          <li>Definir portfólio de produtos do Verve Design</li>
+          <li>Mapear redes municipais de educação como clientes</li>
+          <li>Criar protótipo de material didático para demonstração</li>
+          <li>Apresentar proposta à direção do IFRN CH</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-panel" id="panel-C">
+    <p style="font-size:.85rem;color:var(--ink3);margin-bottom:.5rem">Piloto mínimo viável: uma turma, uma disciplina, com o Verve Design Lab como espaço-laboratório. Validação interna antes de escalar.</p>
+    <div class="scenario-content">
+      <div class="scenario-block">
+        <h4>Escopo Mínimo</h4>
+        <ul class="scenario-list">
+          <li class="ok">1 disciplina do Técnico em Multimídia</li>
+          <li class="ok">1 turma como grupo experimental</li>
+          <li class="ok">Verve Design Lab como laboratório</li>
+          <li>1 artefato didático produzido pelos alunos</li>
+          <li class="warn">Coleta de dados de engajamento (simples)</li>
+        </ul>
+      </div>
+      <div class="scenario-block">
+        <h4>Valor do Piloto</h4>
+        <ul class="scenario-list">
+          <li>Prova de conceito documentada</li>
+          <li>Material para apresentar ao ICe/UFRN</li>
+          <li>Evidência para edital de financiamento</li>
+          <li>Validação da proposta pedagógica na prática</li>
+        </ul>
+      </div>
+      <div class="scenario-block">
+        <h4>Próximos Passos</h4>
+        <ul class="scenario-list">
+          <li>Definir disciplina-piloto (1º sem. 2026)</li>
+          <li>Estruturar Verve Design para o piloto</li>
+          <li>Definir instrumento mínimo de coleta de dados</li>
+          <li>Documentar processo para replicação</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIMENSÕES DE VIABILIDADE -->
+  <div class="section-label"><span>Dimensões de Viabilidade</span></div>
+  <p style="font-size:.83rem;color:var(--ink3);margin-bottom:1rem;margin-top:-.25rem">Marque os itens conforme forem sendo resolvidos. Progresso salvo automaticamente.</p>
+
+  <div class="dimension-accordion" id="dimAccordion">
+
+    <!-- 1. Infraestrutura -->
+    <div class="dim-item" id="dim-infraestrutura">
+      <div class="dim-header" onclick="toggleDim(this)">
+        <div class="dim-icon" style="background:var(--blue-bg);color:var(--blue)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <span class="dim-title">Infraestrutura — Laboratório Verve Design</span>
+        <div class="dim-progress-wrap">
+          <div class="dim-bar"><div class="dim-bar-fill" id="bar-infraestrutura" style="width:0%"></div></div>
+          <span class="dim-pct" id="pct-infraestrutura">0%</span>
+        </div>
+        <svg class="dim-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="dim-body">
+        <ul class="checklist" data-dim="infraestrutura">
+          <li><label><input type="checkbox" data-key="inf_1"> Espaço físico do laboratório definido no IFRN CH</label></li>
+          <li><label><input type="checkbox" data-key="inf_2"> Inventário de equipamentos disponíveis (impressoras, computadores)</label></li>
+          <li><label><input type="checkbox" data-key="inf_3"> Levantamento de equipamentos necessários (impressora 3D, etc.)</label></li>
+          <li><label><input type="checkbox" data-key="inf_4"> Conectividade e infraestrutura digital adequadas</label></li>
+          <li><label><input type="checkbox" data-key="inf_5"> Insumos de produção (filamento PLA, resina, materiais)</label></li>
+          <li><label><input type="checkbox" data-key="inf_6"> Aprovação da direção para uso do espaço</label></li>
+        </ul>
+        <div class="dim-note">
+          <label>Notas e pendências:</label>
+          <textarea data-note="infraestrutura" placeholder="Registre observações, pendências ou decisões sobre a infraestrutura…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Parcerias -->
+    <div class="dim-item" id="dim-parcerias">
+      <div class="dim-header" onclick="toggleDim(this)">
+        <div class="dim-icon" style="background:var(--green-bg);color:var(--green)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span class="dim-title">Parcerias Institucionais — UERN · ICe/UFRN</span>
+        <div class="dim-progress-wrap">
+          <div class="dim-bar"><div class="dim-bar-fill" id="bar-parcerias" style="width:0%"></div></div>
+          <span class="dim-pct" id="pct-parcerias">0%</span>
+        </div>
+        <svg class="dim-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="dim-body">
+        <ul class="checklist" data-dim="parcerias">
+          <li><label><input type="checkbox" data-key="par_1"> Contato inicial com Prof. Dr. Rogério Alcoforado (UERN)</label></li>
+          <li><label><input type="checkbox" data-key="par_2"> Apresentação formal da proposta ao Rogério</label></li>
+          <li><label><input type="checkbox" data-key="par_3"> Confirmação de participação do Rogério no projeto</label></li>
+          <li><label><input type="checkbox" data-key="par_4"> Contato com pesquisadores do ICe/UFRN (Sidarta, Tort, etc.)</label></li>
+          <li><label><input type="checkbox" data-key="par_5"> Apresentação da proposta ao ICe/UFRN</label></li>
+          <li><label><input type="checkbox" data-key="par_6"> Identificação de pesquisadores ICe para linha de cognição/aprendizagem</label></li>
+          <li><label><input type="checkbox" data-key="par_7"> Termo de Cooperação Técnica (TCT) ou carta de intenções</label></li>
+          <li><label><input type="checkbox" data-key="par_8"> Aprovação nas instâncias acadêmicas de cada instituição</label></li>
+        </ul>
+        <div class="dim-note">
+          <label>Notas e pendências:</label>
+          <textarea data-note="parcerias" placeholder="Status das tratativas, próximas reuniões, pontos pendentes…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Financiamento -->
+    <div class="dim-item" id="dim-financiamento">
+      <div class="dim-header" onclick="toggleDim(this)">
+        <div class="dim-icon" style="background:var(--amber-bg);color:var(--amber)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <span class="dim-title">Financiamento — Fontes e Estratégias</span>
+        <div class="dim-progress-wrap">
+          <div class="dim-bar"><div class="dim-bar-fill" id="bar-financiamento" style="width:0%"></div></div>
+          <span class="dim-pct" id="pct-financiamento">0%</span>
+        </div>
+        <svg class="dim-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="dim-body">
+        <ul class="checklist" data-dim="financiamento">
+          <li><label><input type="checkbox" data-key="fin_1"> Mapeamento de editais MCTI abertos ou previstos</label></li>
+          <li><label><input type="checkbox" data-key="fin_2"> Verificação de chamadas CAPES para projetos interinstitucionais</label></li>
+          <li><label><input type="checkbox" data-key="fin_3"> Verificação de editais CNPq (educação, neurociência, IHC)</label></li>
+          <li><label><input type="checkbox" data-key="fin_4"> Verificação de recursos FNDE para inovação educacional</label></li>
+          <li><label><input type="checkbox" data-key="fin_5"> Levantamento de recursos internos IFRN (PROPEX, PROEN)</label></li>
+          <li><label><input type="checkbox" data-key="fin_6"> Elaboração de orçamento mínimo do Cenário C (piloto)</label></li>
+          <li><label><input type="checkbox" data-key="fin_7"> Elaboração de orçamento completo do Cenário A</label></li>
+          <li><label><input type="checkbox" data-key="fin_8"> Identificação de co-proponentes para editais (pesquisadores)</label></li>
+        </ul>
+        <div class="dim-note">
+          <label>Notas e pendências:</label>
+          <textarea data-note="financiamento" placeholder="Editais identificados, prazos, valores, co-proponentes…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Produção Pedagógica -->
+    <div class="dim-item" id="dim-producao">
+      <div class="dim-header" onclick="toggleDim(this)">
+        <div class="dim-icon" style="background:var(--green-bg);color:var(--green)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <span class="dim-title">Produção de Materiais Educacionais</span>
+        <div class="dim-progress-wrap">
+          <div class="dim-bar"><div class="dim-bar-fill" id="bar-producao" style="width:0%"></div></div>
+          <span class="dim-pct" id="pct-producao">0%</span>
+        </div>
+        <svg class="dim-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="dim-body">
+        <ul class="checklist" data-dim="producao">
+          <li><label><input type="checkbox" data-key="prod_1"> Definição do portfólio de artefatos (físicos + digitais)</label></li>
+          <li><label><input type="checkbox" data-key="prod_2"> Mapeamento de disciplinas-piloto no Técnico em Multimídia</label></li>
+          <li><label><input type="checkbox" data-key="prod_3"> Protótipo de material didático como demonstração</label></li>
+          <li><label><input type="checkbox" data-key="prod_4"> Metodologia de produção com alunos como produtores</label></li>
+          <li><label><input type="checkbox" data-key="prod_5"> Instrumento de coleta de dados de engajamento (simples)</label></li>
+          <li><label><input type="checkbox" data-key="prod_6"> Protocolo pedagógico documentado e replicável</label></li>
+        </ul>
+        <div class="dim-note">
+          <label>Notas e pendências:</label>
+          <textarea data-note="producao" placeholder="Ideias de artefatos, metodologias, disciplinas candidatas…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Viabilidade Jurídica e Institucional -->
+    <div class="dim-item" id="dim-juridico">
+      <div class="dim-header" onclick="toggleDim(this)">
+        <div class="dim-icon" style="background:var(--red-bg);color:var(--red)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="dim-title">Formalização Jurídica e Institucional</span>
+        <div class="dim-progress-wrap">
+          <div class="dim-bar"><div class="dim-bar-fill" id="bar-juridico" style="width:0%"></div></div>
+          <span class="dim-pct" id="pct-juridico">0%</span>
+        </div>
+        <svg class="dim-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="dim-body">
+        <ul class="checklist" data-dim="juridico">
+          <li><label><input type="checkbox" data-key="jur_1"> Consulta à Pró-Reitoria de Pesquisa do IFRN (PROPEX)</label></li>
+          <li><label><input type="checkbox" data-key="jur_2"> Verificação de necessidade de Comitê de Ética (CAAE) para coleta de dados</label></li>
+          <li><label><input type="checkbox" data-key="jur_3"> Modelo de acordo de cooperação entre instituições</label></li>
+          <li><label><input type="checkbox" data-key="jur_4"> Definição de titularidade de propriedade intelectual dos artefatos</label></li>
+          <li><label><input type="checkbox" data-key="jur_5"> Anuência da direção do campus CH</label></li>
+        </ul>
+        <div class="dim-note">
+          <label>Notas e pendências:</label>
+          <textarea data-note="juridico" placeholder="Instâncias consultadas, documentos necessários…"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIMULAÇÃO DE FALHA -->
+  <div class="section-label"><span>Simulação de Falha — Iteração Sistêmica</span></div>
+  <p style="font-size:.83rem;color:var(--ink3);margin-bottom:1rem;margin-top:-.25rem">Método: mapear as falhas prováveis antes que aconteçam, definir o que fazer em cada caso. Marque o status conforme avançar.</p>
+
+  <div class="failure-matrix" id="failureMatrix">
+
+    <div class="failure-card" id="fail-1">
+      <div class="failure-header">
+        <div>
+          <div class="failure-title">F1 — Nenhum edital de financiamento aprovado em 2026</div>
+          <div style="margin-top:.3rem"><span class="badge badge-red">Alto impacto</span> <span class="badge badge-amber">Probabilidade média</span></div>
+        </div>
+      </div>
+      <div class="failure-body">
+        <div class="failure-block">
+          <h5>O que acontece</h5>
+          <p>Sem recurso externo, a estruturação completa (Cenário A) fica inviável. O projeto pode paralisar se não houver alternativa planejada.</p>
+        </div>
+        <div class="failure-block">
+          <h5>Contingência</h5>
+          <p>Acionar o Cenário B (Centro Independente) ou C (Piloto Mínimo). Iniciar com os recursos existentes do IFRN CH e usar o piloto como prova de conceito para editais futuros.</p>
+        </div>
+      </div>
+      <div class="failure-status">
+        <label>Status:</label>
+        <select class="status-select" data-fail="fail1_status" onchange="updateFailStatus(this, 'fail-1')">
+          <option value="pendente">Não mitigado</option>
+          <option value="em-andamento">Contingência em andamento</option>
+          <option value="mitigado">Mitigado</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="failure-card" id="fail-2">
+      <div class="failure-header">
+        <div>
+          <div class="failure-title">F2 — Rogério Alcoforado ou ICe/UFRN não confirmam participação</div>
+          <div style="margin-top:.3rem"><span class="badge badge-amber">Impacto médio</span> <span class="badge badge-blue">Probabilidade baixa</span></div>
+        </div>
+      </div>
+      <div class="failure-body">
+        <div class="failure-block">
+          <h5>O que acontece</h5>
+          <p>O projeto perde o suporte filosófico (UERN) ou o suporte neurocientífico (ICe/UFRN), enfraquecendo a proposta interinstitucional e a base científica.</p>
+        </div>
+        <div class="failure-block">
+          <h5>Contingência</h5>
+          <p>Para UERN: mapear outros filósofos especialistas em Kant ou ética moral no RN. Para ICe: iniciar com literatura existente e buscar colaboração pontual. A proposta pode funcionar em modo simplificado.</p>
+        </div>
+      </div>
+      <div class="failure-status">
+        <label>Status:</label>
+        <select class="status-select" data-fail="fail2_status" onchange="updateFailStatus(this, 'fail-2')">
+          <option value="pendente">Não mitigado</option>
+          <option value="em-andamento">Contingência em andamento</option>
+          <option value="mitigado">Mitigado</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="failure-card" id="fail-3">
+      <div class="failure-header">
+        <div>
+          <div class="failure-title">F3 — Resistência interna no IFRN (direção, colegas, burocracia)</div>
+          <div style="margin-top:.3rem"><span class="badge badge-amber">Alto impacto</span> <span class="badge badge-amber">Probabilidade média</span></div>
+        </div>
+      </div>
+      <div class="failure-body">
+        <div class="failure-block">
+          <h5>O que acontece</h5>
+          <p>Dificuldade de obter aval institucional para uso do espaço, integração curricular ou dedicação de carga horária ao projeto.</p>
+        </div>
+        <div class="failure-block">
+          <h5>Contingência</h5>
+          <p>Iniciar o Cenário C dentro de uma disciplina já existente (sem necessidade de aprovação ampla). Documentar resultados para construir legitimidade interna progressivamente.</p>
+        </div>
+      </div>
+      <div class="failure-status">
+        <label>Status:</label>
+        <select class="status-select" data-fail="fail3_status" onchange="updateFailStatus(this, 'fail-3')">
+          <option value="pendente">Não mitigado</option>
+          <option value="em-andamento">Contingência em andamento</option>
+          <option value="mitigado">Mitigado</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="failure-card" id="fail-4">
+      <div class="failure-header">
+        <div>
+          <div class="failure-title">F4 — Alunos não engajam com a proposta de produção ativa</div>
+          <div style="margin-top:.3rem"><span class="badge badge-blue">Impacto controlável</span> <span class="badge badge-amber">Probabilidade média</span></div>
+        </div>
+      </div>
+      <div class="failure-body">
+        <div class="failure-block">
+          <h5>O que acontece</h5>
+          <p>A proposta de "aluno como produtor" encontra resistência — alunos habituados à passividade não se adaptam facilmente, gerando frustração e abandono.</p>
+        </div>
+        <div class="failure-block">
+          <h5>Contingência</h5>
+          <p>Iniciar com tarefas de baixa complexidade e alta visualidade (resultados rápidos e tangíveis). Usar a neurociência do design para criar experiências de "vitória rápida" que ativem a motivação intrínseca.</p>
+        </div>
+      </div>
+      <div class="failure-status">
+        <label>Status:</label>
+        <select class="status-select" data-fail="fail4_status" onchange="updateFailStatus(this, 'fail-4')">
+          <option value="pendente">Não mitigado</option>
+          <option value="em-andamento">Contingência em andamento</option>
+          <option value="mitigado">Mitigado</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="failure-card" id="fail-5">
+      <div class="failure-header">
+        <div>
+          <div class="failure-title">F5 — Desistência por acúmulo de responsabilidades (sobrecarga da proponente)</div>
+          <div style="margin-top:.3rem"><span class="badge badge-red">Alto impacto</span> <span class="badge badge-amber">Risco real</span></div>
+        </div>
+      </div>
+      <div class="failure-body">
+        <div class="failure-block">
+          <h5>O que acontece</h5>
+          <p>Projeto dependente de uma única pessoa (Ivana) sem distribuição de responsabilidades. Acúmulo com docência, mestrado e outras demandas pode paralisar a iniciativa.</p>
+        </div>
+        <div class="failure-block">
+          <h5>Contingência</h5>
+          <p>Distribuir papéis desde o início: identificar 1-2 colegas do IFRN CH que possam co-liderar dimensões. Criar documentação clara para que o projeto sobreviva independente de qualquer pessoa.</p>
+        </div>
+      </div>
+      <div class="failure-status">
+        <label>Status:</label>
+        <select class="status-select" data-fail="fail5_status" onchange="updateFailStatus(this, 'fail-5')">
+          <option value="pendente">Não mitigado</option>
+          <option value="em-andamento">Contingência em andamento</option>
+          <option value="mitigado">Mitigado</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RASTREAMENTO DE CONTATOS -->
+  <div class="section-label"><span>Rastreamento de Contatos Institucionais</span></div>
+  <p style="font-size:.83rem;color:var(--ink3);margin-bottom:1rem;margin-top:-.25rem">Acompanhe o status de cada interlocutor. Altere o status e adicione notas diretamente na tabela.</p>
+
+  <div class="contact-table-wrap">
+    <table class="contact-table">
+      <thead>
+        <tr>
+          <th>Contato</th>
+          <th>Instituição / Papel</th>
+          <th>Objetivo</th>
+          <th>Status</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody id="contactTableBody">
+
+        <tr>
+          <td>
+            <div class="contact-name">Prof. Dr. Rogério Alcoforado</div>
+            <div class="contact-role">rogério.alcoforado@uern.br</div>
+          </td>
+          <td>UERN · Filosofia Kantiana</td>
+          <td>Parceiro filosófico e co-proponente</td>
+          <td>
+            <select class="status-select pendente" data-contact="c1_status" onchange="updateContactStatus(this)">
+              <option value="pendente">Pendente</option>
+              <option value="agendado">Agendado</option>
+              <option value="realizado">Realizado</option>
+              <option value="bloqueado">Bloqueado</option>
+            </select>
+          </td>
+          <td><textarea class="contact-note-input" data-contact="c1_note" placeholder="Adicionar nota…" rows="1" oninput="autoResize(this)"></textarea></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="contact-name">Pesquisadores ICe/UFRN</div>
+            <div class="contact-role">Instituto do Cérebro · UFRN</div>
+          </td>
+          <td>ICe/UFRN · Neurociência Cognitiva</td>
+          <td>Parceria científica e validação pedagógica</td>
+          <td>
+            <select class="status-select pendente" data-contact="c2_status" onchange="updateContactStatus(this)">
+              <option value="pendente">Pendente</option>
+              <option value="agendado">Agendado</option>
+              <option value="realizado">Realizado</option>
+              <option value="bloqueado">Bloqueado</option>
+            </select>
+          </td>
+          <td><textarea class="contact-note-input" data-contact="c2_note" placeholder="Adicionar nota…" rows="1" oninput="autoResize(this)"></textarea></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="contact-name">Direção do Campus CH</div>
+            <div class="contact-role">IFRN · Campus Natal Centro Histórico</div>
+          </td>
+          <td>IFRN CH · Gestão Institucional</td>
+          <td>Aval para uso do Verve Design Lab e integração curricular</td>
+          <td>
+            <select class="status-select pendente" data-contact="c3_status" onchange="updateContactStatus(this)">
+              <option value="pendente">Pendente</option>
+              <option value="agendado">Agendado</option>
+              <option value="realizado">Realizado</option>
+              <option value="bloqueado">Bloqueado</option>
+            </select>
+          </td>
+          <td><textarea class="contact-note-input" data-contact="c3_note" placeholder="Adicionar nota…" rows="1" oninput="autoResize(this)"></textarea></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="contact-name">PROPEX / Pró-Reitoria de Pesquisa</div>
+            <div class="contact-role">IFRN · Reitoria</div>
+          </td>
+          <td>IFRN · Pesquisa e Extensão</td>
+          <td>Viabilidade de projeto interinstitucional e editais internos</td>
+          <td>
+            <select class="status-select pendente" data-contact="c4_status" onchange="updateContactStatus(this)">
+              <option value="pendente">Pendente</option>
+              <option value="agendado">Agendado</option>
+              <option value="realizado">Realizado</option>
+              <option value="bloqueado">Bloqueado</option>
+            </select>
+          </td>
+          <td><textarea class="contact-note-input" data-contact="c4_note" placeholder="Adicionar nota…" rows="1" oninput="autoResize(this)"></textarea></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="contact-name">Sidarta Ribeiro</div>
+            <div class="contact-role">Memória e Aprendizagem · ICe/UFRN</div>
+          </td>
+          <td>ICe/UFRN · Pesquisador</td>
+          <td>Colaboração em linha de pesquisa memória/aprendizagem</td>
+          <td>
+            <select class="status-select pendente" data-contact="c5_status" onchange="updateContactStatus(this)">
+              <option value="pendente">Pendente</option>
+              <option value="agendado">Agendado</option>
+              <option value="realizado">Realizado</option>
+              <option value="bloqueado">Bloqueado</option>
+            </select>
+          </td>
+          <td><textarea class="contact-note-input" data-contact="c5_note" placeholder="Adicionar nota…" rows="1" oninput="autoResize(this)"></textarea></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="contact-name">Coordenação Técnico em Multimídia</div>
+            <div class="contact-role">IFRN CH · Curso Técnico Integrado</div>
+          </td>
+          <td>IFRN CH · Pedagógico</td>
+          <td>Integração curricular da proposta nas disciplinas</td>
+          <td>
+            <select class="status-select pendente" data-contact="c6_status" onchange="updateContactStatus(this)">
+              <option value="pendente">Pendente</option>
+              <option value="agendado">Agendado</option>
+              <option value="realizado">Realizado</option>
+              <option value="bloqueado">Bloqueado</option>
+            </select>
+          </td>
+          <td><textarea class="contact-note-input" data-contact="c6_note" placeholder="Adicionar nota…" rows="1" oninput="autoResize(this)"></textarea></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ETAPAS DE EXECUÇÃO -->
+  <div class="section-label"><span>Etapas de Execução — Roadmap</span></div>
+  <p style="font-size:.83rem;color:var(--ink3);margin-bottom:1.25rem;margin-top:-.25rem">Sequência lógica de etapas. Dependências críticas marcadas em vermelho. Atualize o status de cada etapa.</p>
+
+  <div class="grid-2">
+    <div>
+      <div class="timeline" id="timeline">
+
+        <div class="timeline-item active" id="step-1">
+          <div class="timeline-phase">Fase 0 · Agora</div>
+          <div class="timeline-title">Levantamento Interno e Articulação Inicial</div>
+          <div class="timeline-desc">Mapear recursos disponíveis no IFRN CH, estruturar o Verve Design Lab, iniciar contatos com Rogério e ICe/UFRN.</div>
+          <div class="timeline-deps">
+            <span class="dep-tag critical">Rogério confirmado</span>
+            <span class="dep-tag critical">Aval direção CH</span>
+          </div>
+          <div class="timeline-status-wrap">
+            <select class="timeline-status-select" data-step="step1" onchange="updateStepStatus(this, 'step-1')">
+              <option value="">Em andamento</option>
+              <option value="done">Concluído</option>
+              <option value="blocked">Bloqueado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="timeline-item" id="step-2">
+          <div class="timeline-phase">Fase 1 · Abr–Jun 2026</div>
+          <div class="timeline-title">Piloto Mínimo em Sala de Aula</div>
+          <div class="timeline-desc">Executar Cenário C: 1 disciplina-piloto com alunos como produtores no Verve Design Lab. Coletar dados de engajamento.</div>
+          <div class="timeline-deps">
+            <span class="dep-tag critical">Fase 0 completa</span>
+            <span class="dep-tag">Protocolo pedagógico</span>
+          </div>
+          <div class="timeline-status-wrap">
+            <select class="timeline-status-select" data-step="step2" onchange="updateStepStatus(this, 'step-2')">
+              <option value="">Não iniciado</option>
+              <option value="active">Em andamento</option>
+              <option value="done">Concluído</option>
+              <option value="blocked">Bloqueado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="timeline-item" id="step-3">
+          <div class="timeline-phase">Fase 2 · Jul–Set 2026</div>
+          <div class="timeline-title">Formalização Interinstitucional</div>
+          <div class="timeline-desc">Assinar termo de cooperação com UERN e ICe/UFRN. Submissão de proposta a editais identificados.</div>
+          <div class="timeline-deps">
+            <span class="dep-tag critical">Parceiros confirmados</span>
+            <span class="dep-tag">Resultados do piloto</span>
+          </div>
+          <div class="timeline-status-wrap">
+            <select class="timeline-status-select" data-step="step3" onchange="updateStepStatus(this, 'step-3')">
+              <option value="">Não iniciado</option>
+              <option value="active">Em andamento</option>
+              <option value="done">Concluído</option>
+              <option value="blocked">Bloqueado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="timeline-item" id="step-4">
+          <div class="timeline-phase">Fase 3 · Out 2026+</div>
+          <div class="timeline-title">Estruturação do Centro de Produção</div>
+          <div class="timeline-desc">Com ou sem financiamento externo: ampliar o Verve Design Lab, iniciar produção de materiais para redes parceiras, institucionalizar o modelo.</div>
+          <div class="timeline-deps">
+            <span class="dep-tag">Financiamento definido</span>
+            <span class="dep-tag">TCT assinado</span>
+          </div>
+          <div class="timeline-status-wrap">
+            <select class="timeline-status-select" data-step="step4" onchange="updateStepStatus(this, 'step-4')">
+              <option value="">Não iniciado</option>
+              <option value="active">Em andamento</option>
+              <option value="done">Concluído</option>
+              <option value="blocked">Bloqueado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="timeline-item" id="step-5">
+          <div class="timeline-phase">Fase 4 · 2027</div>
+          <div class="timeline-title">Validação Científica e Publicação</div>
+          <div class="timeline-desc">Análise dos dados coletados com apoio do ICe/UFRN. Publicação de artigos sobre a metodologia. Apresentação em congressos.</div>
+          <div class="timeline-deps">
+            <span class="dep-tag critical">ICe/UFRN ativo</span>
+            <span class="dep-tag">Dados coletados</span>
+          </div>
+          <div class="timeline-status-wrap">
+            <select class="timeline-status-select" data-step="step5" onchange="updateStepStatus(this, 'step-5')">
+              <option value="">Não iniciado</option>
+              <option value="active">Em andamento</option>
+              <option value="done">Concluído</option>
+              <option value="blocked">Bloqueado</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PERGUNTAS DE VERIFICAÇÃO -->
+    <div>
+      <div class="card">
+        <div class="card-title">Perguntas Críticas para Decisão</div>
+        <ul class="scenario-list" style="gap:.75rem;margin-top:.5rem">
+          <li>O Verve Design Lab tem estrutura mínima para funcionar como sala de aula E espaço de produção simultaneamente?</li>
+          <li>Rogério Alcoforado tem disponibilidade e interesse real em integrar o projeto formalmente?</li>
+          <li>Qual pesquisador do ICe/UFRN tem maior interface com design e aprendizagem?</li>
+          <li>Há edital aberto ou previsto nos próximos 6 meses compatível com este projeto?</li>
+          <li>Qual disciplina do Técnico em Multimídia permite executar o piloto com menor burocracia?</li>
+          <li>Como o projeto de mestrado (Ivana) se conecta com o instrumento de coleta do projeto?</li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <div class="card-title">Observações Gerais</div>
+        <textarea
+          id="globalNote"
+          style="width:100%;min-height:120px;border:none;background:transparent;font-family:var(--sans);font-size:.85rem;color:var(--ink2);resize:vertical;outline:none;padding:0"
+          placeholder="Use este espaço para qualquer anotação geral sobre o projeto, decisões tomadas, insights…"
+          oninput="scheduleAutoSave()"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <p style="font-size:.75rem;color:var(--ink3);text-align:center">Ferramenta interna · Projeto Verve Design — IFRN Campus Natal Centro Histórico · 2026 · Dados armazenados localmente neste navegador</p>
+
+</div>
+
+<!-- ===========================
+     JAVASCRIPT
+=========================== -->
+<script>
+// ===== TABS =====
+function switchTab(id, btn) {
+  document.querySelectorAll('.scenario-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+}
+
+// ===== ACCORDION =====
+function toggleDim(header) {
+  const item = header.closest('.dim-item');
+  item.classList.toggle('open');
+}
+
+// ===== CHECKLIST =====
+function initChecklists() {
+  document.querySelectorAll('.checklist input[type="checkbox"]').forEach(cb => {
+    const key = cb.dataset.key;
+    cb.checked = localStorage.getItem(key) === '1';
+    if (cb.checked) cb.closest('li').classList.add('checked');
+    cb.addEventListener('change', () => {
+      localStorage.setItem(key, cb.checked ? '1' : '0');
+      cb.closest('li').classList.toggle('checked', cb.checked);
+      updateDimProgress(cb.closest('.checklist').dataset.dim);
+      updateKPIs();
+      scheduleAutoSave();
+    });
+  });
+
+  // notes
+  document.querySelectorAll('textarea[data-note]').forEach(ta => {
+    const key = 'note_' + ta.dataset.note;
+    ta.value = localStorage.getItem(key) || '';
+    ta.addEventListener('input', () => {
+      localStorage.setItem(key, ta.value);
+      scheduleAutoSave();
+    });
+  });
+}
+
+function updateDimProgress(dim) {
+  const items = document.querySelectorAll(`.checklist[data-dim="${dim}"] input[type="checkbox"]`);
+  const done = [...items].filter(i => i.checked).length;
+  const pct = items.length ? Math.round(done / items.length * 100) : 0;
+  const bar = document.getElementById('bar-' + dim);
+  const pctEl = document.getElementById('pct-' + dim);
+  if (bar) bar.style.width = pct + '%';
+  if (pctEl) pctEl.textContent = pct + '%';
+  if (bar) {
+    bar.style.background = pct === 100 ? 'var(--green)' : pct > 50 ? 'var(--amber)' : 'var(--blue)';
+  }
+}
+
+function updateKPIs() {
+  const allCbs = document.querySelectorAll('.checklist input[type="checkbox"]');
+  const done = [...allCbs].filter(cb => cb.checked).length;
+  const pct = allCbs.length ? Math.round(done / allCbs.length * 100) : 0;
+  document.getElementById('kpi-viab').textContent = pct + '%';
+
+  // contatos realizados
+  const contacts = document.querySelectorAll('select[data-contact$="_status"]');
+  const realizados = [...contacts].filter(s => s.value === 'realizado').length;
+  document.getElementById('kpi-contatos').textContent = realizados + '/' + contacts.length;
+
+  // riscos nao mitigados
+  const fails = document.querySelectorAll('select[data-fail$="_status"]');
+  const naoMitigados = [...fails].filter(s => s.value === 'pendente').length;
+  document.getElementById('kpi-riscos').textContent = naoMitigados;
+}
+
+// ===== FAILURE STATUS =====
+function updateFailStatus(sel, cardId) {
+  const card = document.getElementById(cardId);
+  const val = sel.value;
+  card.className = 'failure-card' + (val === 'mitigado' ? ' mitigado' : val === 'em-andamento' ? ' em-andamento' : '');
+  localStorage.setItem(sel.dataset.fail, val);
+  updateKPIs();
+  scheduleAutoSave();
+}
+
+function initFailures() {
+  document.querySelectorAll('select[data-fail]').forEach(sel => {
+    const saved = localStorage.getItem(sel.dataset.fail);
+    if (saved) {
+      sel.value = saved;
+      const cardId = sel.closest('.failure-card').id;
+      updateFailStatus(sel, cardId);
+    }
+  });
+}
+
+// ===== CONTACT STATUS =====
+function updateContactStatus(sel) {
+  const val = sel.value;
+  sel.className = 'status-select ' + val;
+  localStorage.setItem(sel.dataset.contact, val);
+  updateKPIs();
+  scheduleAutoSave();
+}
+
+function initContacts() {
+  document.querySelectorAll('select[data-contact$="_status"]').forEach(sel => {
+    const saved = localStorage.getItem(sel.dataset.contact);
+    if (saved) { sel.value = saved; sel.className = 'status-select ' + saved; }
+  });
+  document.querySelectorAll('textarea[data-contact$="_note"]').forEach(ta => {
+    ta.value = localStorage.getItem(ta.dataset.contact) || '';
+    ta.addEventListener('input', () => {
+      localStorage.setItem(ta.dataset.contact, ta.value);
+      scheduleAutoSave();
+    });
+  });
+}
+
+// ===== STEPS =====
+function updateStepStatus(sel, stepId) {
+  const item = document.getElementById(stepId);
+  item.className = 'timeline-item';
+  if (sel.value === 'active') item.classList.add('active');
+  if (sel.value === 'done') item.classList.add('done');
+  localStorage.setItem(sel.dataset.step, sel.value);
+  scheduleAutoSave();
+}
+
+function initSteps() {
+  document.querySelectorAll('select[data-step]').forEach(sel => {
+    const saved = localStorage.getItem(sel.dataset.step);
+    if (saved !== null) {
+      sel.value = saved;
+      updateStepStatus(sel, sel.closest('.timeline-item').id);
+    }
+  });
+}
+
+// ===== GLOBAL NOTE =====
+function initGlobalNote() {
+  const ta = document.getElementById('globalNote');
+  ta.value = localStorage.getItem('global_note') || '';
+  ta.addEventListener('input', () => {
+    localStorage.setItem('global_note', ta.value);
+  });
+}
+
+// ===== AUTO RESIZE TEXTAREA =====
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+
+// ===== SAVE =====
+let saveTimer = null;
+function scheduleAutoSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveAll, 2000);
+}
+
+function saveAll() {
+  // All data is already saved per-change via localStorage; this just updates the timestamp
+  const now = new Date();
+  const str = now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+  localStorage.setItem('viab_last_saved', str);
+  document.getElementById('lastSaved').textContent = str;
+  const msg = document.getElementById('savedMsg');
+  msg.classList.add('show');
+  setTimeout(() => msg.classList.remove('show'), 2500);
+}
+
+// ===== EXPORT =====
+function exportReport() {
+  const allCbs = document.querySelectorAll('.checklist input[type="checkbox"]');
+  const done = [...allCbs].filter(cb => cb.checked).length;
+  const total = allCbs.length;
+
+  const contacts = document.querySelectorAll('select[data-contact$="_status"]');
+  const realizados = [...contacts].filter(s => s.value === 'realizado').length;
+
+  const fails = document.querySelectorAll('select[data-fail$="_status"]');
+  const naoMitigados = [...fails].filter(s => s.value === 'pendente').length;
+  const mitigados = [...fails].filter(s => s.value === 'mitigado').length;
+
+  const globalNote = document.getElementById('globalNote').value;
+
+  let lines = [
+    '=== LEVANTAMENTO DE VIABILIDADE — PROJETO IFRN EDUCAÇÃO & NEUROCIÊNCIA ===',
+    'Data de exportação: ' + new Date().toLocaleDateString('pt-BR'),
+    '',
+    '--- RESUMO ---',
+    `Viabilidade geral (checklists): ${done}/${total} itens (${Math.round(done/total*100)}%)`,
+    `Contatos realizados: ${realizados}/6`,
+    `Riscos não mitigados: ${naoMitigados}/5`,
+    `Riscos mitigados: ${mitigados}/5`,
+    '',
+    '--- DIMENSÕES ---',
+  ];
+
+  ['infraestrutura','parcerias','financiamento','producao','juridico'].forEach(dim => {
+    const items = document.querySelectorAll(`.checklist[data-dim="${dim}"] input[type="checkbox"]`);
+    const doneItems = [...items].filter(i => i.checked).length;
+    lines.push(`  ${dim}: ${doneItems}/${items.length}`);
+    const note = localStorage.getItem('note_' + dim);
+    if (note) lines.push(`    Nota: ${note}`);
+  });
+
+  lines.push('', '--- SIMULAÇÃO DE FALHAS ---');
+  document.querySelectorAll('.failure-card').forEach(card => {
+    const title = card.querySelector('.failure-title').textContent;
+    const status = card.querySelector('select').value;
+    lines.push(`  ${title}: ${status}`);
+  });
+
+  lines.push('', '--- CONTATOS ---');
+  document.querySelectorAll('#contactTableBody tr').forEach(row => {
+    const name = row.querySelector('.contact-name')?.textContent;
+    const status = row.querySelector('select')?.value;
+    const note = row.querySelector('textarea')?.value;
+    if (name) lines.push(`  ${name}: ${status}${note ? ' | ' + note : ''}`);
+  });
+
+  if (globalNote) {
+    lines.push('', '--- OBSERVAÇÕES GERAIS ---', globalNote);
+  }
+
+  const blob = new Blob([lines.join('\n')], {type: 'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'viabilidade-projeto-ifrn-' + new Date().toISOString().split('T')[0] + '.txt';
+  a.click();
+}
+
+// ===== INIT =====
+window.addEventListener('DOMContentLoaded', () => {
+  initChecklists();
+  initFailures();
+  initContacts();
+  initSteps();
+  initGlobalNote();
+
+  ['infraestrutura','parcerias','financiamento','producao','juridico'].forEach(updateDimProgress);
+  updateKPIs();
+
+  const saved = localStorage.getItem('viab_last_saved');
+  if (saved) document.getElementById('lastSaved').textContent = saved;
+});
+</script>
+
+</body>
+</html>

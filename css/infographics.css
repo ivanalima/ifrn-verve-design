@@ -1,0 +1,99 @@
+/* === Shared SVG diagram styles === */
+.diagram svg {
+  font-family: var(--sans);
+}
+
+/* === Pillar diagram nodes === */
+.pillar-node {
+  cursor: pointer;
+  transition: transform .25s var(--ease-out);
+}
+.pillar-node:hover { transform: scale(1.05) }
+
+.pillar-node circle {
+  transition: fill .25s, stroke .25s, stroke-width .25s;
+  stroke-width: 2;
+}
+.pillar-node text {
+  fill: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.pillar-node .node-sub {
+  fill: var(--ink3);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+/* Node colors */
+.node-filosofia circle { fill: var(--green-bg); stroke: var(--green) }
+.node-design circle { fill: var(--blue-bg); stroke: var(--blue) }
+.node-neuro circle { fill: var(--amber-bg); stroke: var(--amber) }
+
+.node-filosofia.active circle { fill: var(--green); stroke: var(--green) }
+.node-design.active circle { fill: var(--blue); stroke: var(--blue) }
+.node-neuro.active circle { fill: var(--amber); stroke: var(--amber) }
+
+.node-filosofia.active text,
+.node-design.active text,
+.node-neuro.active text { fill: #fff }
+
+/* === Connection paths === */
+.connection-path {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.connection-arrow {
+  fill: var(--ink3);
+  transition: fill .25s;
+}
+
+/* === Rede institutional diagram === */
+.rede-node {
+  cursor: pointer;
+  transition: transform .2s var(--ease-out);
+}
+.rede-node:hover { transform: scale(1.06) }
+
+.rede-node circle {
+  transition: fill .25s, stroke .25s;
+  stroke-width: 2;
+}
+.rede-node text {
+  fill: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.rede-node .rede-role {
+  fill: var(--ink3);
+  font-size: 9px;
+  font-weight: 400;
+}
+
+.rede-node.center circle { fill: var(--green-bg); stroke: var(--green) }
+.rede-node.satellite circle { fill: #fff; stroke: var(--rule) }
+.rede-node.active circle { fill: var(--green-bg); stroke: var(--green) }
+
+.rede-line {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 1.5;
+  stroke-dasharray: 6, 4;
+  transition: stroke .25s;
+}
+.rede-line.active { stroke: var(--green) }
+
+/* === Central label (Verve Design) === */
+.diagram-center-label {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 300;
+  fill: var(--ink2);
+  text-anchor: middle;
+}

@@ -1,0 +1,180 @@
+/* ============================================================
+   ESTILOS DE IMPRESSÃO / PDF
+   Ativados via @media print ou via classe body.printing
+   ============================================================ */
+
+@media print {
+
+  /* === Configuração de página === */
+  @page {
+    size: A4 portrait;
+    margin: 2cm 2.2cm 2cm 2.2cm;
+  }
+  @page :first {
+    margin-top: 1.5cm;
+  }
+
+  /* === Preservar cores na impressão === */
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* === Ocultar elementos de interface === */
+  .nav,
+  .nav-toggle,
+  .comparison-handle,
+  .hero-cta,
+  #export-bar,
+  a[href="viabilidade.html"] {
+    display: none !important;
+  }
+
+  /* === Remover efeitos visuais de tela === */
+  body::before { display: none !important; }
+  body { background: white !important; }
+
+  .nav { display: none !important; }
+
+  /* === Margens e espaçamento de seções === */
+  .section {
+    padding: 1.5rem 0 !important;
+    break-inside: avoid;
+  }
+  .section-divider {
+    margin: 0 !important;
+    border-top-color: #ddd !important;
+  }
+  .section-inner {
+    max-width: 100% !important;
+  }
+
+  /* === Hero compacto === */
+  .hero {
+    min-height: auto !important;
+    padding: 1.5rem 0 !important;
+  }
+  .hero h1 {
+    font-size: 2rem !important;
+  }
+
+  /* === Abrir detalhes dos pilares === */
+  .pillar-detail {
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  /* === Comparação: layout estático lado a lado === */
+  .comparison-container {
+    position: static !important;
+    min-height: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    break-inside: avoid;
+  }
+  .comparison-before {
+    position: static !important;
+    clip-path: none !important;
+    border-right: 2px solid var(--rule) !important;
+    padding: 1.5rem !important;
+  }
+  .comparison-after {
+    position: static !important;
+    padding: 1.5rem !important;
+  }
+  .comparison-after > div {
+    margin-left: 0 !important;
+  }
+  .comparison-handle { display: none !important; }
+
+  /* === Diagrama SVG === */
+  .diagram-container,
+  .rede-diagram {
+    break-inside: avoid;
+    padding: 1rem 0 !important;
+  }
+  .diagram-container svg { max-width: 400px !important; }
+  .rede-diagram svg { max-width: 500px !important; }
+
+  /* === Rede institucional — mostrar todos os cards === */
+  .rede-card {
+    break-inside: avoid;
+  }
+
+  /* === Grids === */
+  .grid-2,
+  .grid-3,
+  .problema-stats,
+  .proposta-features,
+  .rede-details {
+    display: grid !important;
+    break-inside: avoid;
+  }
+
+  /* === Cards e blocos === */
+  .feature-card,
+  .stat-card,
+  .rede-card,
+  .pesquisadora-card {
+    break-inside: avoid;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+  .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* === Pesquisadora card compacto === */
+  .pesquisadora-foto {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  /* === Quebras de página entre seções principais === */
+  #pilares,
+  #rede,
+  #equipe {
+    break-before: page;
+  }
+
+  /* === Quotes === */
+  .quote {
+    break-inside: avoid;
+    border-left: 3px solid var(--green) !important;
+    background: #eef6ee !important;
+  }
+
+  /* === Revelação de animações — mostrar tudo === */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* === Pillar nodes SVG === */
+  .pillar-node circle { fill: var(--paper2) !important; }
+
+  /* === Footer === */
+  .footer {
+    border-top: 1px solid #ddd !important;
+    padding: .5rem 0 !important;
+    font-size: 9px !important;
+    break-before: avoid;
+  }
+
+  /* === CTA section === */
+  .section-cta {
+    background: #eef6ee !important;
+    break-inside: avoid;
+    text-align: center;
+  }
+
+  /* === Links: mostrar href como texto === */
+  a[href^="mailto"]::after {
+    content: " (" attr(href) ")";
+    font-size: .85em;
+    color: #555;
+  }
+}

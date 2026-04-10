@@ -1,0 +1,181 @@
+/* === Cards === */
+.card {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: #fff;
+  overflow: hidden;
+  transition: transform .17s ease, box-shadow .17s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(26, 24, 20, .08);
+}
+.card-band { height: 5px; width: 100% }
+.card-body { padding: 1.5rem }
+
+/* === Stat cards === */
+.stat-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+}
+.stat-number {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+.stat-number.red { color: var(--red) }
+.stat-number.amber { color: var(--amber) }
+.stat-number.green { color: var(--green) }
+.stat-number.blue { color: var(--blue) }
+.stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  line-height: 1.4;
+}
+
+/* === Tags === */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 16px;
+  border: 1px solid var(--rule);
+  color: var(--ink2);
+  letter-spacing: .03em;
+}
+.tag.green { background: var(--green-bg); border-color: var(--green-border); color: var(--green) }
+.tag.blue { background: var(--blue-bg); border-color: var(--blue-border); color: var(--blue) }
+.tag.amber { background: var(--amber-bg); border-color: var(--amber-border); color: var(--amber) }
+
+/* === Buttons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+  text-decoration: none;
+}
+.btn:active { transform: scale(.97) }
+
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+}
+.btn-primary:hover { background: #256825; color: #fff }
+
+.btn-secondary {
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid var(--green-border);
+}
+.btn-secondary:hover { background: #c5e0c5 }
+
+/* === Pillar buttons === */
+.pillar-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--rule);
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color .25s, background .25s, transform .15s;
+}
+.pillar-btn:hover { transform: translateY(-2px) }
+.pillar-btn.active { border-width: 2px }
+.pillar-btn.green.active { border-color: var(--green); background: var(--green-bg) }
+.pillar-btn.blue.active { border-color: var(--blue); background: var(--blue-bg) }
+.pillar-btn.amber.active { border-color: var(--amber); background: var(--amber-bg) }
+
+.pillar-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pillar-icon.green { background: var(--green-bg); color: var(--green) }
+.pillar-icon.blue { background: var(--blue-bg); color: var(--blue) }
+.pillar-icon.amber { background: var(--amber-bg); color: var(--amber) }
+
+.pillar-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+.pillar-sub {
+  font-size: 12px;
+  color: var(--ink3);
+  line-height: 1.5;
+}
+
+/* === Pillar detail panel === */
+.pillar-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s var(--ease-out), opacity .3s;
+  opacity: 0;
+}
+.pillar-detail.open {
+  max-height: 600px;
+  opacity: 1;
+}
+.pillar-detail-inner {
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: #fff;
+  margin-top: 1.5rem;
+}
+
+/* === Quote block === */
+.quote {
+  border-left: 3px solid var(--green);
+  padding: .75rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--green-bg);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: var(--ink);
+  max-width: none;
+}
+
+/* === Footer === */
+.footer {
+  border-top: 1px solid var(--rule);
+  padding: 1rem var(--side-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.footer-l { font-size: 10px; color: var(--ink3) }
+.footer-r { font-size: 10px; color: var(--ink3); font-family: var(--serif); font-style: italic }
