@@ -618,7 +618,7 @@ a:hover { text-decoration: underline; }
       <div class="qr-wrap">
         <div class="qr-label">Escanear para contato</div>
         <div id="qrcode"></div>
-        <div style="font-size:.7rem;color:var(--ink3);text-align:center;max-width:120px;line-height:1.4;">Cartão digital com contatos completos</div>
+        <div style="font-size:.7rem;color:var(--ink3);text-align:center;max-width:120px;line-height:1.4;">Abre cartão digital com contatos</div>
       </div>
 
     </div>
@@ -634,22 +634,8 @@ a:hover { text-decoration: underline; }
 <!-- QR Code: qrcode.js via CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-  // vCard — ao escanear, o celular oferece "Salvar Contato" nativamente (funciona offline)
-  const vcardData = [
-    'BEGIN:VCARD',
-    'VERSION:3.0',
-    'FN:Prof. Ivana Lima',
-    'N:Lima;Ivana;;;Prof.',
-    'ORG:IFRN Campus Natal Centro Historico',
-    'TITLE:Professora de Design Grafico',
-    'TEL;TYPE=CELL:+5584994615508',
-    'EMAIL;TYPE=WORK:ivana.lima@ifrn.edu.br',
-    'EMAIL;TYPE=HOME:ivanalima@icloud.com',
-    'END:VCARD'
-  ].join('\n');
-
   new QRCode(document.getElementById('qrcode'), {
-    text: vcardData,
+    text: 'https://ivanalima.github.io/ifrn-verve-design/cartao.html',
     width: 120,
     height: 120,
     colorDark: '#1e5c1e',
